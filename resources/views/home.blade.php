@@ -1,6 +1,8 @@
 @extends('layouts.app')
-@section('title','home')
+@section('title','Panel de control')
 @section('script-top')
+<script src="{{asset("assets/js/charts/loader.js")}}"></script>
+<script src="{{asset("assets/js/charts/chars.js")}}"></script>
     @parent
 @endsection
 @section('script-bottom')
@@ -25,7 +27,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dashboard</h1>
+            <h1>Panel de control</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -50,10 +52,12 @@
               </div>
               <div class="card-body">
                 You are logged in!
+                <!--Div that will hold the pie chart-->
+                <div id="chart_div"></div>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
-                Laravel 5.8.* &copy; 2020
+                Laravel 5.8.*
               </div>
               <!-- /.card-footer-->
             </div>

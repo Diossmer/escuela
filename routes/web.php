@@ -14,7 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('documento',function(){
+    $pdf = \PDF::loadView('planilla.pdf');
+    return $pdf->stream();
+})->name('pdf');
+Route::group(['middleware' => ['auth.admin'], 'namespace'=>'Admin'], function () {
+    Route::resource('admin','AdminController');
+});
+Route::group(['namespace'=>'User'], function () {
+    Route::resource('docente','DocenteController',['except'=>['destroy']]);
+});
