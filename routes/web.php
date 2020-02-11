@@ -21,7 +21,7 @@ Route::get('documento',function(){
     $pdf = \PDF::loadView('planilla.pdf');
     return $pdf->stream();
 })->name('pdf');
-Route::group(['middleware' => ['auth.admin'], 'namespace'=>'Admin'], function () {
+Route::group(['middleware' => ['admin'], 'namespace'=>'Admin'], function () {
     Route::resource('admin','AdminController');
 });
 Route::group(['namespace'=>'User'], function () {

@@ -1,4 +1,3 @@
-USUARIO
 @extends('layouts.app')
 @section('title','Docente')
 @section('script-top')

@@ -19,7 +19,7 @@
           ['Onions', 1],
           ['Olives', 1],
           ['Zucchini', 1],
-          ['Pepperoni', 2]
+          ['www.sss', 2]
         ]);
 
         // Set chart options

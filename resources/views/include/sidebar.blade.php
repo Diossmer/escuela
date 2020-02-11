@@ -42,15 +42,22 @@
               </p>
             </a>
           </li>
+          @if(Auth::user()->name == "Administrador")
+          <li class="nav-item has-treeview">
+            <a href="{{route('docente.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Docente
+              </p>
+            </a>
+          </li>
+          @endif
           <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
+              @if(Auth::user()->name == "Administrador")
               <p>
-                @if(Auth::user()->name == "Administrador")
-                Docente
-                @else
-                Representante
-                @endif
+                Tabla del docente
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -58,57 +65,77 @@
               <li class="nav-item">
                 <a href="../layout/top-nav.html" class="nav-link">
                     <i class="fas fa-table nav-icon"></i>
-                  <p>sss</p>
+                  <p>Ingreso</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../layout/top-nav-sidebar.html" class="nav-link">
                     <i class="fas fa-table nav-icon"></i>
-                  <p>Top Navigation + Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../layout/boxed.html" class="nav-link">
-                  <i class="fas fa-table nav-icon"></i>
-                  <p>Boxed</p>
+                  <p>Egreso</p>
                 </a>
               </li>
             </ul>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Formularios
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-edit"></i>
+                  <p>
+                    Ingreso Formularios
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../forms/general.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                      <p>Registrar</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../forms/advanced.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                      <p>Roles</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            @else
+            <p>
+                Tabla de registro
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../forms/general.html" class="nav-link">
-                    <i class="fas fa-file-alt nav-icon"></i>
-                  <p>General Elements</p>
+                <a href="../layout/top-nav.html" class="nav-link">
+                    <i class="fas fa-table nav-icon"></i>
+                  <p>Período Escolar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../forms/advanced.html" class="nav-link">
-                    <i class="fas fa-file-alt nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/editors.html" class="nav-link">
-                    <i class="fas fa-file-alt nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/validation.html" class="nav-link">
-                    <i class="fas fa-file-alt nav-icon"></i>
-                  <p>Validation</p>
+                <a href="../layout/top-nav.html" class="nav-link">
+                    <i class="fas fa-table nav-icon"></i>
+                  <p>Sección</p>
                 </a>
               </li>
             </ul>
-          </li>
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-edit"></i>
+                  <p>
+                    Ingreso Formularios
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="../forms/general.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                      <p>Registrar</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            @endif
           <li class="nav-header">Archivo</li>
           <li class="nav-item">
             <a href="{{route("pdf")}}" class="nav-link">

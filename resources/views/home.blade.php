@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('title','Panel de control')
 @section('script-top')
-<script src="{{asset("assets/js/charts/loader.js")}}"></script>
-<script src="{{asset("assets/js/charts/chars.js")}}"></script>
-    @parent
+@parent
+
 @endsection
 @section('script-bottom')
-    @parent
+<script type="text/javascript" src="{{asset("assets/js/charts/loader.js")}}"></script>
+<script type="text/javascript" src="{{asset("assets/js/charts/charts.js")}}"></script>
+@parent
 @endsection
 @section('style')
     @parent
