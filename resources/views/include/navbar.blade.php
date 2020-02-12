@@ -33,15 +33,16 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                @if(Auth::user()->name == "Administrador")
-            <a href="{{route('admin.index')}}" class="nav-link">Home</a>
+                {{-- @if(Auth::user()->name == "Administrador")
+            <a href="" class="nav-link">Inicio</a>
                 @else
-            <a href="{{route('docente.index')}}" class="nav-link">Home</a>
-            @endif
+            <a href="" class="nav-link">Inicio</a>
+            @endif --}}
+            <a href="{{route('home')}}" class="nav-link">Inicio</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
-            </li>
+            {{--<li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Contactos</a>
+            </li> --}}
         </ul>
 
         <!-- SEARCH FORM -->

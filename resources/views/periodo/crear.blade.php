@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Administrador')
+@section('title','Crear')
 @section('script-top')
     @parent
 @endsection
@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Director</h1>
+            <h1>Docente</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->

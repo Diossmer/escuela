@@ -17,13 +17,11 @@
           <img src="{{asset("assets/img/user2-160x160.jpg")}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
+
         @if(Auth::user()->name == "Administrador")
-        {{--
-            * AQUI ES EL SHOW DEL ADMINISTRADOR *
-        --}}
-        <a href="{{route('admin.index')}}" class="d-block">{{Auth::user()->name}}</a>
+        <a href="{{route('admin.show',Auth::user()->id)}}" class="d-block">{{Auth::user()->name}}</a>
         @else
-        <a href="{{route('docente.index')}}" class="d-block">{{Auth::user()->name}}</a>
+        <a href="{{route('docente.show',Auth::user()->id)}}" class="d-block">{{Auth::user()->name}}</a>
         @endif
         </div>
       </div>
@@ -43,35 +41,35 @@
             </a>
           </li>
           @if(Auth::user()->name == "Administrador")
-          <li class="nav-item has-treeview">
-            <a href="{{route('docente.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                Docente
-              </p>
-            </a>
-          </li>
+
           @endif
-          <li class="nav-item has-treeview menu-close">
+          @if(Auth::user()->name == "Administrador")
+
+            <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
-              @if(Auth::user()->name == "Administrador")
               <p>
-                Tabla del docente
+                Visualizar
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
-                    <i class="fas fa-table nav-icon"></i>
-                  <p>Ingreso</p>
+                <li class="nav-item has-treeview">
+                    <a href="{{route('admin.index')}}" class="nav-link">
+                      <i class="nav-icon fas fa-user"></i>
+                      <p>Administrador</p>
+                    </a>
+                  </li>
+                <li class="nav-item">
+                <a href="{{route('admin.user')}}" class="nav-link">
+                    <i class="fas fa-user nav-icon"></i>
+                  <p>Docente</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../layout/top-nav-sidebar.html" class="nav-link">
+                <a href="{{route('roles.index')}}" class="nav-link">
                     <i class="fas fa-table nav-icon"></i>
-                  <p>Egreso</p>
+                  <p>Roles</p>
                 </a>
               </li>
             </ul>
@@ -79,19 +77,19 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>
-                    Ingreso Formularios
+                    Registrar datos
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../forms/general.html" class="nav-link">
+                    <a href="{{route('admin.create')}}" class="nav-link">
                         <i class="fas fa-file-alt nav-icon"></i>
-                      <p>Registrar</p>
+                      <p>Docente</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../forms/advanced.html" class="nav-link">
+                    <a href="{{route('roles.create')}}" class="nav-link">
                         <i class="fas fa-file-alt nav-icon"></i>
                       <p>Roles</p>
                     </a>
@@ -99,7 +97,16 @@
                 </ul>
               </li>
             @else
-            <p>
+            <li class="nav-item">
+                <a href="{{route('docente.index')}}" class="nav-link">
+                    <i class="fas fa-user nav-icon"></i>
+                  <p>Docente</p>
+                </a>
+              </li>
+            <li class="nav-item has-treeview menu-close">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+                <p>
                 Tabla de registro
                 <i class="fas fa-angle-left right"></i>
               </p>

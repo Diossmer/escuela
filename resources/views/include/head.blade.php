@@ -15,13 +15,12 @@
 <!-- Ionicons -->
 {{-- <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
 
-@section('script-top')
-
-@show
-
 @section('style')
 <!-- Styles -->
 <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{asset("assets/css/adminlte.min.css")}}">
 @show
 
+@section('script-top')
+
+@show

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Role;
 
-class DocenteController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class DocenteController extends Controller
     public function index()
     {
         //
-        // $docente = User::where('name','docente')->orderBy('name','desc')->get();
-        return view('periodo.inicio');//,compact('docente')
+        $role = Role::all();
+        return view('roles.inicio',compact('role'));
     }
 
     /**
@@ -27,6 +28,7 @@ class DocenteController extends Controller
     public function create()
     {
         //
+        return view('roles.crear');
     }
 
     /**
@@ -38,17 +40,8 @@ class DocenteController extends Controller
     public function store(Request $request)
     {
         //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        Role::create(['name'=>$request->name]);
+        return redirect('roles');
     }
 
     /**
@@ -60,6 +53,8 @@ class DocenteController extends Controller
     public function edit($id)
     {
         //
+        $role = Role::find($id);
+        return view('roles.editar',compact('role'));
     }
 
     /**
@@ -72,16 +67,10 @@ class DocenteController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $role=Role::find($id);
+        $role->name = $request->name;
+        $role->save();
+        $role->users()->detach();
+        return redirect('roles');
     }
 }

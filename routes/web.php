@@ -11,19 +11,35 @@
 |
 */
 
+use App\Http\Controllers\Admin\AdminController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('documento',function(){
     $pdf = \PDF::loadView('planilla.pdf');
     return $pdf->stream();
 })->name('pdf');
+
 Route::group(['middleware' => ['admin'], 'namespace'=>'Admin'], function () {
-    Route::resource('admin','AdminController');
+    Route::get('admin/user','AdminController@user')->name('admin.user');
+    Route::get('admin','AdminController@index')->name('admin.index');
+    Route::get('admin/create','AdminController@create')->name('admin.create');
+    Route::post('admin','AdminController@store')->name('admin.store');
+    Route::get('admin/{id}','AdminController@show')->name('admin.show');
+    Route::get('admin/{id}/edit','AdminController@edit')->name('admin.edit');
+    Route::put('admin/{admin}','AdminController@update')->name('admin.update');
+    Route::delete('admin/{admin}','AdminController@destroy')->name('admin.destroy');
+    Route::resource('roles', 'RoleController',['except'=>['show']]);
 });
+
 Route::group(['namespace'=>'User'], function () {
     Route::resource('docente','DocenteController',['except'=>['destroy']]);
 });
+
+
+//CREAR LA AUTORIZACION DE ROLES

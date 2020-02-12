@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Docente')
+@section('title','Editar')
 @section('script-top')
     @parent
 @endsection
