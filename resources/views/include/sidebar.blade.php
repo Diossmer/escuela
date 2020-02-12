@@ -8,7 +8,6 @@
            style="opacity: .8">
         <span class="brand-text font-weight-light">{{config('app_name','Laravel')}}</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
@@ -17,7 +16,6 @@
           <img src="{{asset("assets/img/user2-160x160.jpg")}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-
         @if(Auth::user()->hasAnyRole('administrador'))
         <a href="{{route('admin.show',Auth::user()->id)}}" class="d-block">{{Auth::user()->name}}</a>
         @else
@@ -25,7 +23,6 @@
         @endif
         </div>
       </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -43,7 +40,6 @@
           {{-- @if(Auth::user()->name == "Administrador")
           @endif --}}
           @if(Auth::user()->hasAnyRole('administrador'))
-
             <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -65,18 +61,28 @@
                   <p>Docente</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{route('roles.index')}}" class="nav-link">
-                    <i class="fas fa-table nav-icon"></i>
-                  <p>Roles</p>
-                </a>
-              </li>
             </ul>
+            <li class="nav-item has-treeview menu-close">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tablet-alt"></i>
+                  <p>
+                    Tabla
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('roles.index')}}" class="nav-link">
+                        <i class="fas fa-table nav-icon"></i>
+                      <p>Roles</p>
+                    </a>
+                  </li>
+                </ul>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>
-                    Registrar datos
+                    Registros de datos
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -112,15 +118,27 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
+                <a href="" class="nav-link">
                     <i class="fas fa-table nav-icon"></i>
-                  <p>Período Escolar</p>
+                  <p>Período escolar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
+                <a href="" class="nav-link">
                     <i class="fas fa-table nav-icon"></i>
-                  <p>Sección</p>
+                  <p>Sección escolar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="fas fa-table nav-icon"></i>
+                  <p>Representante</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="fas fa-table nav-icon"></i>
+                  <p>Alumno escolar</p>
                 </a>
               </li>
             </ul>
@@ -128,7 +146,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>
-                    Ingreso Formularios
+                    Registros de datos
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -136,7 +154,25 @@
                   <li class="nav-item">
                     <a href="../forms/general.html" class="nav-link">
                         <i class="fas fa-file-alt nav-icon"></i>
-                      <p>Registrar</p>
+                      <p>Período escolar</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../forms/general.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                      <p>Sección escolar</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../forms/general.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                      <p>Representante</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="../forms/general.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                      <p>Alumno escolar</p>
                     </a>
                   </li>
                 </ul>
