@@ -53,12 +53,16 @@
               <div class="card-body">
                 You are logged in!
                 <!--Div that will hold the pie chart-->
-                <div id="chart_div"></div>
-                <div class="frame"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1747.7021520518665!2d-66.
-                    9456522778854!3d10.464463619215918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
-                    1!3m3!1m2!1s0x8c2a5f7be286f405%3A0xf8c93765e3157d53!2sE.B.
-                    N%20Parroquia%20La%20Vega!5e0!3m2!1ses!2sve!4v1581537014893!5m2!1ses!2sve"
-                     width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
+                <div class="row">
+                    <div class="col-6"><div id="chart_div"></div></div>
+                    <div class="col-6">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1747.7021520518665!2d-66.
+                        9456522778854!3d10.464463619215918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
+                        1!3m3!1m2!1s0x8c2a5f7be286f405%3A0xf8c93765e3157d53!2sE.B.
+                        N%20Parroquia%20La%20Vega!5e0!3m2!1ses!2sve!4v1581537014893!5m2!1ses!2sve"
+                         width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    </div>
+                </div>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
