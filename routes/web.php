@@ -40,3 +40,4 @@ Route::group(['namespace'=>'User'], function () {
 });
 
 //CREAR LA AUTORIZACION DE ROLES QUIEN ESTA AUTORIZADO AL CRUD
+//https://github.com/farhanwazir/laravelgooglemaps

@@ -87,16 +87,16 @@
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  <li class="nav-item">
+                    <li class="nav-item">
+                        <a href="{{route('roles.create')}}" class="nav-link">
+                            <i class="fas fa-file-alt nav-icon"></i>
+                          <p>Roles</p>
+                        </a>
+                      </li>
+                    <li class="nav-item">
                     <a href="{{route('admin.create')}}" class="nav-link">
                         <i class="fas fa-file-alt nav-icon"></i>
                       <p>Docente</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{route('roles.create')}}" class="nav-link">
-                        <i class="fas fa-file-alt nav-icon"></i>
-                      <p>Roles</p>
                     </a>
                   </li>
                 </ul>

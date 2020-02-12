@@ -15,7 +15,7 @@ class AccessAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->hasAnyRole('administrador')){
+        if(Auth::user()->hasAnyRole('Administrador')){
             return $next($request);
         }
         return redirect('home');
