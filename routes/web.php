@@ -11,8 +11,6 @@
 |
 */
 
-use App\Http\Controllers\Admin\AdminController;
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -41,5 +39,4 @@ Route::group(['namespace'=>'User'], function () {
     Route::resource('docente','DocenteController',['except'=>['destroy']]);
 });
 
-
-//CREAR LA AUTORIZACION DE ROLES
+//CREAR LA AUTORIZACION DE ROLES QUIEN ESTA AUTORIZADO AL CRUD

@@ -18,7 +18,7 @@
         </div>
         <div class="info">
 
-        @if(Auth::user()->name == "Administrador")
+        @if(Auth::user()->hasAnyRole('administrador'))
         <a href="{{route('admin.show',Auth::user()->id)}}" class="d-block">{{Auth::user()->name}}</a>
         @else
         <a href="{{route('docente.show',Auth::user()->id)}}" class="d-block">{{Auth::user()->name}}</a>
@@ -40,10 +40,9 @@
               </p>
             </a>
           </li>
-          @if(Auth::user()->name == "Administrador")
-
-          @endif
-          @if(Auth::user()->name == "Administrador")
+          {{-- @if(Auth::user()->name == "Administrador")
+          @endif --}}
+          @if(Auth::user()->hasAnyRole('administrador'))
 
             <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
