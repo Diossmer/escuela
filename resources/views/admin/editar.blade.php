@@ -57,17 +57,17 @@
                     {!! Form::label('name', 'Nombre', ['class'=>'badge-primary']) !!}
                     {!! Form::text('name', $admin->name, ['class'=>'form-control']) !!}<br>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                     {!! Form::label('email', 'Dirección de correo', ['class'=>'badge-primary']) !!}
                     {!! Form::email('email', $admin->email, ['class'=>'form-control']) !!}<br>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                     {!! Form::label('password', 'Contraseña', ['class'=>'badge-primary']) !!}
                     {!! Form::text('password', $admin->password, ['class'=>'form-control']) !!}<br>
                     </div>
                     <div class="col-md-4">
                         {!! Form::label('role', 'Role', ['class'=>'badge-primary']) !!}
-                        {!! Form::select('role', $role->pluck('name','id'), $role->name, ['class'=>'form-control','placeholder'=>'Seleccione un rol']) !!}<br>
+                        {!! Form::select('role', $role, $admin->roles, ['class'=>'form-control','placeholder'=>'Seleccione un rol']) !!}<br>
                     </div>
                 </div>
                 {!! Form::submit('Actualizar', ['class'=>'btn btn-success']) !!}

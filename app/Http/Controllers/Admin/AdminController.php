@@ -99,7 +99,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         //
-        $role=Role::find($id);
+        $role=Role::pluck('name','id');
         $admin=User::find($id);
         return view('admin.editar',compact('admin','role'));
     }
@@ -119,6 +119,7 @@ class AdminController extends Controller
             $admin->email=$request->email;
             $admin->password=bcrypt($request->password);
         $admin->save();
+        $admin->roles()->detach();
         $admin->roles()->attach($request->role);
         return redirect('admin/user')->with('admin','Con exito');
 
