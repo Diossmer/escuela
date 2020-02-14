@@ -68,7 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                    <a href="{{ url('/home') }}">{{Auth::user()->name}}</a>
+                    <a href="{{ url('/home') }}">{{Auth::user()->nombre}}</a>
                     @else
                         <a href="{{ route('login') }}">Iniciar Sesión</a>
 

@@ -12,14 +12,14 @@ class AdminController extends Controller
     public function user()
     {
         //
-        //where('name','like','%valor%')->orderBy('name','desc')->get(); Muestrame la letras v ordenada
-        //$docente = User::where('name','>','b')->orderBy('name','desc')->paginate(5); Muestrame en mayor a menor el abecedario
+        //where('nombre','like','%valor%')->orderBy('nombre','desc')->get(); Muestrame la letras v ordenada
+        //$docente = User::where('nombre','>','b')->orderBy('nombre','desc')->paginate(5); Muestrame en mayor a menor el abecedario
 
         $docente = User::join('role_user', function ($join) {
             $join->on('users.id', '=', 'role_user.user_id')
             ->where('role_user.role_id','>',1);})
             ->select('users.*')
-            ->orderBy('name','desc')
+            ->orderBy('nombre','desc')
             ->paginate(5);
         return view('admin.user',compact('docente'));
     }
@@ -31,7 +31,7 @@ class AdminController extends Controller
     public function index()
     {
         //
-        //where('name','administrador')->orderBy('name','asc')->get(); Muestrame un valor
+        //where('nombre','administrador')->orderBy('nombre','asc')->get(); Muestrame un valor
         /*join('role_user', 'users.id', '=', 'role_user.user_id')
         ->select('users.*','role_user.role_id')
         ->get();
@@ -42,7 +42,7 @@ class AdminController extends Controller
             $join->on('users.id', '=', 'role_user.user_id')
             ->where('role_user.role_id','=',1);})
             ->select('users.*')
-            ->orderBy('name','asc')
+            ->orderBy('nombre','asc')
             ->paginate(5);
         // return $admin;
         return view('admin.inicio',compact('admin'));
@@ -56,7 +56,7 @@ class AdminController extends Controller
     public function create()
     {
         //
-        $role = Role::pluck('name','id');
+        $role = Role::pluck('nombre','id');
         return view('admin.crear',compact('role'));
     }
 
@@ -71,7 +71,7 @@ class AdminController extends Controller
         //
         if($request->password == $request->passwords){
             $admin = User::create([
-                'name'=>$request->name,
+                'nombre'=>$request->nombre,
                 'email'=>$request->email,
                 'password'=>bcrypt($request->password),
                 ]);
@@ -107,7 +107,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         //
-        $role=Role::pluck('name','id');
+        $role=Role::pluck('nombre','id');
         $admin=User::find($id);
         return view('admin.editar',compact('admin','role'));
     }
@@ -123,7 +123,7 @@ class AdminController extends Controller
     {
         //
         $admin = User::find($id);
-            $admin->name=$request->name;
+            $admin->nombre=$request->nombre;
             $admin->email=$request->email;
             $admin->password=bcrypt($request->password);
         $admin->save();

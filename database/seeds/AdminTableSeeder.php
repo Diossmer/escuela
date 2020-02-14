@@ -19,16 +19,16 @@ class AdminTableSeeder extends Seeder
     {
         //
         // DB::table('users')->insert([
-        //     'name' => 'administrador',
+        //     'nombre' => 'administrador',
         //     'email' => 'admin@admin.com',
         //     'password' => Hash::make('1234'),
         //     'created_at' => carbon::now()->format('Y-m-d H:i:s'),
         //     'updated_at' => carbon::now()->format('Y-m-d H:i:s'),
         // ]);
-        $role_admin = Role::where('name','administrador')->first();
-        $role_docente = Role::where('name', 'docente')->first();
+        $role_admin = Role::where('nombre','administrador')->first();
+        $role_docente = Role::where('nombre', 'docente')->first();
         $user =User::create([
-            'name'=>'Administrador',
+            'nombre'=>'Administrador',
             'email'=>'admin@email.com',
             'password'=> Hash::make('1234'),
             'created_at' => carbon::now()->format('Y-m-d H:i:s'),
@@ -36,7 +36,7 @@ class AdminTableSeeder extends Seeder
         ]);
         $user->roles()->attach($role_admin);
         $user =User::create([
-            'name'=>'Docente',
+            'nombre'=>'Docente',
             'email'=>'user@email.com',
             'password'=> Hash::make('1234'),
             'created_at' => carbon::now()->format('Y-m-d H:i:s'),

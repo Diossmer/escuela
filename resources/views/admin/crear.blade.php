@@ -67,8 +67,8 @@
                 {!! Form::token() !!}
                 <div class="row">
                     <div class="col-md-3">
-                    {!! Form::label('name', 'Nombre', ['class'=>'badge-primary']) !!}
-                    {!! Form::text('name', old('name'), ['class'=>'form-control']) !!}<br>
+                    {!! Form::label('nombre', 'Nombre', ['class'=>'badge-primary']) !!}
+                    {!! Form::text('nombre', old('nombre'), ['class'=>'form-control']) !!}<br>
                     </div>
                     <div class="col-md-3">
                     {!! Form::label('email', 'Dirección de correo', ['class'=>'badge-primary']) !!}

@@ -15,7 +15,7 @@ class DocenteController extends Controller
     public function index()
     {
         //
-        // $docente = User::where('name','docente')->orderBy('name','desc')->get();
+        // $docente = User::where('nombre','docente')->orderBy('nombre','desc')->get();
         return view('periodo.inicio');//,compact('docente')
     }
 

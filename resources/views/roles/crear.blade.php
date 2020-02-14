@@ -53,8 +53,8 @@
                 {!! Form::token() !!}
                 <div class="row">
                     <div class="col-md-3">
-                    {!! Form::label('name', 'Nombre', ['class'=>'badge-primary']) !!}
-                    {!! Form::text('name', null, ['class'=>'form-control']) !!}<br>
+                    {!! Form::label('nombre', 'Nombre', ['class'=>'badge-primary']) !!}
+                    {!! Form::text('nombre', old('nombre'), ['class'=>'form-control']) !!}<br>
                     </div>
                 </div>
                 {!! Form::submit('Registrar', ['class'=>'btn btn-success']) !!}

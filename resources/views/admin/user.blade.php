@@ -86,12 +86,12 @@
                             <tbody>
                             @foreach ($docente as $docentes)
                                 <tr>
-                                <td>{{$docentes->name}}</td>
+                                <td>{{$docentes->nombre}}</td>
                                 <td>{{$docentes->email}}</td>
                                 <td>{{$docentes->created_at}}</td>
                                 <td>{{$docentes->updated_at}}</td>
                                 <td>@foreach ($docentes->roles as $role)
-                                    {{$role->name}}
+                                    {{$role->nombre}}
                                 @endforeach</td>
                                 <td>
                                     {!! Form::open(["route"=>["admin.destroy",$docentes->id],"method"=>"delete"]) !!}

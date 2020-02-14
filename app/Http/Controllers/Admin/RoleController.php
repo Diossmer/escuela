@@ -40,7 +40,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //
-        Role::create(['name'=>$request->name]);
+        Role::create(['nombre'=>$request->nombre]);
         return redirect('roles');
     }
 
@@ -68,7 +68,7 @@ class RoleController extends Controller
     {
         //
         $role=Role::find($id);
-        $role->name = $request->name;
+        $role->nombre = $request->nombre;
         $role->save();
         $role->users()->detach();
         return redirect('roles');

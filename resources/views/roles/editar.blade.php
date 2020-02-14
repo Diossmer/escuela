@@ -55,8 +55,8 @@
                 {!! Form::token() !!}
                 <div class="row">
                     <div class="col-md-3">
-                    {!! Form::label('name', 'Nombre', ['class'=>'badge-primary']) !!}
-                    {!! Form::text('name', $role->name, ['class'=>'form-control']) !!}<br>
+                    {!! Form::label('nombre', 'Nombre', ['class'=>'badge-primary']) !!}
+                    {!! Form::text('nombre', $role->nombre, ['class'=>'form-control']) !!}<br>
                     </div>
                 </div>
                 {!! Form::submit('Actualizar', ['class'=>'btn btn-success']) !!}

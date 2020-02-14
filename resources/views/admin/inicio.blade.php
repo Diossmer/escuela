@@ -86,7 +86,7 @@
                             <tbody>
                                 @foreach ($admin as $admins)
                                     <tr>
-                                    <td>{{$admins->name}}</td>
+                                    <td>{{$admins->nombre}}</td>
                                     <td>{{$admins->email}}</td>
                                     <td>{{$admins->created_at}}</td>
                                     <td>{{$admins->updated_at}}</td>

@@ -67,7 +67,7 @@
                 <tbody>
                 @foreach ($role as $roles)
                     <tr>
-                        <td>{{$roles->name}}</td>
+                        <td>{{$roles->nombre}}</td>
                         <td>
                         {!! link_to_route("roles.edit", "Editar",$roles->id,["class"=>"btn btn-primary"]) !!}
                         </td>

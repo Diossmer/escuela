@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nombre', 'email', 'password',
     ];
 
     /**
@@ -42,9 +42,9 @@ class User extends Authenticatable
     }
 
     public function hasAnyRoles($roles){
-        return null !== $this->roles()->whereIn('name',$roles)->first();
+        return null !== $this->roles()->whereIn('nombre',$roles)->first();
     }
     public function hasAnyRole($role){
-        return null !== $this->roles()->where('name',$role)->first();
+        return null !== $this->roles()->where('nombre',$role)->first();
     }
 }

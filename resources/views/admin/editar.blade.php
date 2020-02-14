@@ -68,8 +68,8 @@
                 {!! Form::token() !!}
                 <div class="row">
                     <div class="col-md-2">
-                    {!! Form::label('name', 'Nombre', ['class'=>'badge-primary']) !!}
-                    {!! Form::text('name', $admin->name, ['class'=>'form-control']) !!}<br>
+                    {!! Form::label('nombre', 'Nombre', ['class'=>'badge-primary']) !!}
+                    {!! Form::text('nombre', $admin->nombre, ['class'=>'form-control']) !!}<br>
                     </div>
                     <div class="col-md-3">
                     {!! Form::label('email', 'Dirección de correo', ['class'=>'badge-primary']) !!}
