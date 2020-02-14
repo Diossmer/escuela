@@ -41,3 +41,7 @@ Route::group(['namespace'=>'User'], function () {
 
 //CREAR LA AUTORIZACION DE ROLES QUIEN ESTA AUTORIZADO AL CRUD
 //https://github.com/farhanwazir/laravelgooglemaps
+
+//asignar autorizacion de crud a un rol con un checkbox...
+//preguntar antes de eliminar un rol
+//validar formulario...

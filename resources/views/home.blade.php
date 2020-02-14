@@ -40,9 +40,27 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Dashboard</h3>
 
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+                </div>
+                @elseif(session('admin'))
+                <div class="alert alert-info" role="alert">
+                    <li>{{session('admin')}}</li>
+                </div>
+                @elseif(session('docente'))
+                <div class="alert alert-info" role="alert">
+                    <li>{{session('docente')}}</li>
+                </div>
+                @endif
+
+              <div class="card-header">
+                <h3 class="card-title">Panel de control</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fas fa-minus"></i></button>
@@ -51,17 +69,9 @@
                 </div>
               </div>
               <div class="card-body">
-                You are logged in!
                 <!--Div that will hold the pie chart-->
                 <div class="row">
                     <div class="col-6"><div id="chart_div"></div></div>
-                    <div class="col-6">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1747.7021520518665!2d-66.
-                        9456522778854!3d10.464463619215918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
-                        1!3m3!1m2!1s0x8c2a5f7be286f405%3A0xf8c93765e3157d53!2sE.B.
-                        N%20Parroquia%20La%20Vega!5e0!3m2!1ses!2sve!4v1581537014893!5m2!1ses!2sve"
-                         width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-                    </div>
                 </div>
               </div>
               <!-- /.card-body -->

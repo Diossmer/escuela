@@ -38,9 +38,23 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Administrador</h3>
 
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+                </div>
+                @elseif(session('admin'))
+                <div class="alert alert-info" role="alert">
+                    <li>{{session('admin')}}</li>
+                </div>
+                @endif
+
+              <div class="card-header">
+                <h3 class="card-title">Director</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fas fa-minus"></i></button>

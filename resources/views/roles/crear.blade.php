@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Nuevo Docente</h1>
+            <h1>Nuevo Role</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -58,6 +58,7 @@
                     </div>
                 </div>
                 {!! Form::submit('Registrar', ['class'=>'btn btn-success']) !!}
+                {!!link_to('home','Regresar',['class'=>'btn btn-success'])!!}
                 {!! Form::close() !!}
               </div>
               <!-- /.card-body -->

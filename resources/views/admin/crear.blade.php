@@ -38,9 +38,23 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Crear Nuevo</h3>
 
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+                </div>
+                @elseif(session('admin'))
+                <div class="alert alert-info" role="alert">
+                    <li>{{session('admin')}}</li>
+                </div>
+                @endif
+
+              <div class="card-header">
+                <h3 class="card-title">Nuevo Docente</h3>
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fas fa-minus"></i></button>
@@ -54,23 +68,31 @@
                 <div class="row">
                     <div class="col-md-3">
                     {!! Form::label('name', 'Nombre', ['class'=>'badge-primary']) !!}
-                    {!! Form::text('name', null, ['class'=>'form-control']) !!}<br>
+                    {!! Form::text('name', old('name'), ['class'=>'form-control']) !!}<br>
                     </div>
                     <div class="col-md-3">
                     {!! Form::label('email', 'Dirección de correo', ['class'=>'badge-primary']) !!}
-                    {!! Form::email('email', null, ['class'=>'form-control']) !!}<br>
+                    {!! Form::email('email', old('email'), ['class'=>'form-control']) !!}<br>
                     </div>
                     <div class="col-md-3">
-                    {!! Form::label('password', 'Contraseña', ['class'=>'badge-primary']) !!}
-                    {!! Form::text('password', null, ['class'=>'form-control']) !!}<br>
-                    </div>
-                    <div class="col-md-3">
-                    {!! Form::label('passwords', 'Verificar Contraseña', ['class'=>'badge-primary']) !!}
-                    {!! Form::text('passwords', null, ['class'=>'form-control']) !!}<br>
+                        {!! Form::label('role', 'Roles', ['class'=>'badge-primary']) !!}
+                        {!! Form::select('role', $role, old('role'), ['class'=>'form-control','placeholder'=>'selecciona una opción']) !!}<br>
                     </div>
                 </div>
-                {!! Form::select('role', $role, $role->pluck('name','id'), ['class'=>'form-control','placeholder'=>'selecciona una opción']) !!}<br>
+                <div class="row">
+                    <div class="col-md-3">
+                        {!! Form::label('password', 'Contraseña', ['class'=>'badge-primary']) !!}
+                        {!! Form::text('password', null, ['class'=>'form-control']) !!}<br>
+                        </div>
+                        <div class="col-md-3">
+                        {!! Form::label('passwords', 'Verificar Contraseña', ['class'=>'badge-primary']) !!}
+                        {!! Form::text('passwords', null, ['class'=>'form-control']) !!}<br>
+                        </div>
+                </div>
                 {!! Form::submit('Registrar', ['class'=>'btn btn-success']) !!}
+                {!!Form::reset('Borrar',['class'=>'btn btn-success'])!!}
+                {!!link_to('home','Regresar',['class'=>'btn btn-success'])!!}
+                {!! Form::close() !!}
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

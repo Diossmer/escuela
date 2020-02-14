@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Director</h1>
+            <h1>Roles</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -39,7 +39,7 @@
             <!-- Default box -->
             <div class="card">
               <div class="card-header">
-        <h3 class="card-title">Administrador</h3>
+        <h3 class="card-title">Roles</h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">

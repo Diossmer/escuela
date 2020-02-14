@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+
 class AdminController extends Controller
 {
     public function user()
@@ -16,8 +17,9 @@ class AdminController extends Controller
 
         $docente = User::join('role_user', function ($join) {
             $join->on('users.id', '=', 'role_user.user_id')
-            ->where('role_user.role_id','=',2);})
+            ->where('role_user.role_id','>',1);})
             ->select('users.*')
+            ->orderBy('name','desc')
             ->get();
         return view('admin.demo',compact('docente'));
     }
@@ -40,6 +42,7 @@ class AdminController extends Controller
             $join->on('users.id', '=', 'role_user.user_id')
             ->where('role_user.role_id','=',1);})
             ->select('users.*')
+            ->orderBy('name','asc')
             ->get();
         // return $admin;
         return view('admin.inicio',compact('admin'));
@@ -72,10 +75,15 @@ class AdminController extends Controller
                 'email'=>$request->email,
                 'password'=>bcrypt($request->password),
                 ]);
-            $admin->roles()->attach($request->role);
-            return redirect('admin');
+            if($request->role==1){
+                $admin->roles()->attach($request->role);
+                return redirect('admin')->with('admin','Creado con Exito');
+            }else{
+                $admin->roles()->attach($request->role);
+                return redirect('admin/user')->with('admin','Creado con Exito');
+            }
         }
-        return redirect('admin')->with('admin','fallido');
+    return back()->with('admin','Nínguna de la contraseña coinciden.');
     }
 
     /**
@@ -120,9 +128,14 @@ class AdminController extends Controller
             $admin->password=bcrypt($request->password);
         $admin->save();
         $admin->roles()->detach();
-        $admin->roles()->attach($request->role);
-        return redirect('admin/user')->with('admin','Con exito');
-
+        if($request->role==1){
+            $admin->roles()->attach($request->role);
+            return redirect('admin')->with('admin','Actualizado');
+        }else{
+            $admin->roles()->attach($request->role);
+            return redirect('admin/user')->with('admin','Actualizado');
+        }
+    //return redirect('admin/'.$id.'/edit')->with('admin','fallido');
     }
 
     /**
@@ -135,6 +148,6 @@ class AdminController extends Controller
     {
         //
         User::destroy($id);
-        return redirect('admin');
+        return redirect()->back();
     }
 }
