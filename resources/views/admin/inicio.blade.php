@@ -91,7 +91,7 @@
                                     <td>{{$admins->created_at}}</td>
                                     <td>{{$admins->updated_at}}</td>
                                     <td>@foreach ($admins->roles as $role)
-                                        {{$role->name}}
+                                        {{$role->nombre}}
                                     @endforeach</td>
                                     <td>
                                         {!! Form::open(["route"=>["admin.destroy",$admins->id],"method"=>"delete"]) !!}
