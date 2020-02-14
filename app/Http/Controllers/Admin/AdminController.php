@@ -20,8 +20,8 @@ class AdminController extends Controller
             ->where('role_user.role_id','>',1);})
             ->select('users.*')
             ->orderBy('name','desc')
-            ->get();
-        return view('admin.demo',compact('docente'));
+            ->paginate(5);
+        return view('admin.user',compact('docente'));
     }
     /**
      * Display a listing of the resource.
@@ -43,7 +43,7 @@ class AdminController extends Controller
             ->where('role_user.role_id','=',1);})
             ->select('users.*')
             ->orderBy('name','asc')
-            ->get();
+            ->paginate(5);
         // return $admin;
         return view('admin.inicio',compact('admin'));
     }
@@ -83,7 +83,7 @@ class AdminController extends Controller
                 return redirect('admin/user')->with('admin','Creado con Exito');
             }
         }
-    return back()->with('admin','Nínguna de la contraseña coinciden.');
+    return redirect('admin/create')->with('admin','Nínguna de la contraseña coinciden.');
     }
 
     /**

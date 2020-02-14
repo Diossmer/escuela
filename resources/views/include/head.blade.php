@@ -19,6 +19,8 @@
 <!-- Styles -->
 <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="{{asset("assets/css/adminlte.min.css")}}">
+<!-- admin Style.css -->
+<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 @show
 
 @section('script-top')

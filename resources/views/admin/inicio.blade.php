@@ -97,13 +97,14 @@
                                         {!! Form::open(["route"=>["admin.destroy",$admins->id],"method"=>"delete"]) !!}
                                         {!! Form::token() !!}
                                         {!! link_to_route("admin.edit", "Editar",$admins->id,["class"=>"btn btn-primary"]) !!}
-                                        {!! Form::submit("Eliminar", ["class"=>"btn btn-danger"]) !!}
+                                        {!! Form::submit("Eliminar", ["class"=>"btn btn-danger quest"]) !!}
                                         {!! Form::close() !!}
                                     </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                           </table>
+                          {{$admin->links()}}
                         </div>
                         <!-- /.card-body -->
                       </div>

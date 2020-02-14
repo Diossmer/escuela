@@ -103,7 +103,8 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                          </table>
+                        </table>
+                        {{$docente->links()}}
                         </div>
                         <!-- /.card-body -->
                       </div>
