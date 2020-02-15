@@ -149,6 +149,6 @@ class AdminController extends Controller
     {
         //
         User::destroy($id);
-        return redirect()->back()->with('admin','EL usuario se elimino exitosamente.');
+        return redirect()->back()->with('admin','EL usuario se eliminó exitosamente.');
     }
 }
