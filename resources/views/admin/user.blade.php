@@ -103,7 +103,7 @@
                                     {!! Form::open(["route"=>["admin.destroy",$docentes->id],"method"=>"delete"]) !!}
                                     {!! Form::token() !!}
                                     {!! link_to_route("admin.edit", "Editar",$docentes->id,["class"=>"btn btn-primary"]) !!}
-                                    {!! Form::submit("Eliminar", ["class"=>"btn btn-danger","onclick"=>"return confirm('¿Seguró que quieres eliminar?')"]) !!}
+                                    {!! Form::submit("Eliminar", ["class"=>"btn btn-danger","onclick"=>"return confirm('¿Seguró que quieres eliminar $docentes->nombre?')"]) !!}
                                     {!! Form::close() !!}
                                 </td>
                                 </tr>
