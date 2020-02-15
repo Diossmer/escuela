@@ -56,10 +56,20 @@
               <div class="card-header">
                 <h3 class="card-title">Director</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <!-- Search -->
+                    {!! Form::open(['route'=>['admin.index'],'method'=>'get','class'=>'form-inline ml-3']) !!}
+                        <div class="input-group input-group-sm">
+                        {!! Form::text("nombre", old('nombre'), ['class'=>'form-control form-control-navbar',"placeholder"=>"Buscar"]) !!}
+                        <div class="input-group-append">
+                                {!! Form::button(null,["class"=>"fas fa-search btn-warning",'type'=>'submit']) !!}
+                        </div>
+                        </div>
+                    {!! Form::close() !!}
+                    <!-- Search end -->
+                  {{-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fas fa-minus"></i></button>
                   <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fas fa-times"></i></button>
+                    <i class="fas fa-times"></i></button> --}}
                 </div>
               </div>
               <div class="card-body">

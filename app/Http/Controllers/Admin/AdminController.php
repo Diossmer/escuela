@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
-use Illuminate\Support\Facades\Redirect;
+
 
 class AdminController extends Controller
 {
-    public function user()
+    public function user(Request $request)
     {
         //
+        $nombre = $request->nombre;
         //where('nombre','like','%valor%')->orderBy('nombre','desc')->get(); Muestrame la letras v ordenada
         //$docente = User::where('nombre','>','b')->orderBy('nombre','desc')->paginate(5); Muestrame en mayor a menor el abecedario
 
@@ -20,6 +21,7 @@ class AdminController extends Controller
             $join->on('users.id', '=', 'role_user.user_id')
             ->where('role_user.role_id','>',1);})
             ->select('users.*')
+            ->nombre($nombre)
             ->orderBy('nombre','desc')
             ->paginate(5);
         return view('admin.user',compact('docente'));
@@ -29,8 +31,9 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $nombre = $request->get('nombre');
         //
         //where('nombre','administrador')->orderBy('nombre','asc')->get(); Muestrame un valor
         /*join('role_user', 'users.id', '=', 'role_user.user_id')
@@ -38,14 +41,14 @@ class AdminController extends Controller
         ->get();
         Join('roles', 'users.id', '=', 'roles.id') */
 
-
         $admin = User::join('role_user', function ($join) {
             $join->on('users.id', '=', 'role_user.user_id')
             ->where('role_user.role_id','=',1);})
             ->select('users.*')
-            ->orderBy('nombre','asc')
+            ->where('nombre', 'LIKE', '%'.$nombre.'%')
+            ->orderBy('created_at')
             ->paginate(5);
-        // return $admin;
+
         return view('admin.inicio',compact('admin'));
     }
 

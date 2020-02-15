@@ -47,4 +47,8 @@ class User extends Authenticatable
     public function hasAnyRole($role){
         return null !== $this->roles()->where('nombre',$role)->first();
     }
+    public function scopeNombre($query,$nombre){
+        if($nombre)
+        return $query->where('nombre', 'LIKE', '%'.$nombre.'%');
+    }
 }
