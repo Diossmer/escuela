@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminVerification;
 use App\User;
 use App\Role;
 
@@ -70,12 +71,20 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminVerification $request)
     {
         //
         if($request->password == $request->passwords){
             $admin = User::create([
                 'nombre'=>$request->nombre,
+                'seg_nombre'=>$request->seg_nombre,
+                'apellido'=>$request->apellido,
+                'seg_apellido'=>$request->seg_apellido,
+                'nacionalidad'=>$request->nacionalidad,
+                'localidad'=>$request->localidad,
+                'telefono'=>$request->telefono,
+                'fecha'=>$request->fecha,
+                'direccion'=>$request->direccion,
                 'email'=>$request->email,
                 'password'=>bcrypt($request->password),
                 ]);
@@ -99,7 +108,8 @@ class AdminController extends Controller
     public function show($id)
     {
         //
-        return view('admin.mostrar');
+        $admin = User::find($id);
+        return view('admin.mostrar',compact('admin'));
     }
 
     /**
@@ -123,11 +133,19 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminVerification $request, $id)
     {
         //
         $admin = User::find($id);
             $admin->nombre=$request->nombre;
+            $admin->seg_nombre=$request->seg_nombre;
+            $admin->apellido=$request->apellido;
+            $admin->seg_apellido=$request->seg_apellido;
+            $admin->nacionalidad=$request->nacionalidad;
+            $admin->localidad=$request->localidad;
+            $admin->telefono=$request->telefono;
+            $admin->fecha=$request->fecha;
+            $admin->direccion=$request->direccion;
             $admin->email=$request->email;
             $admin->password=bcrypt($request->password);
         $admin->save();

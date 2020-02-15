@@ -56,44 +56,80 @@
               <div class="card-header">
                 <h3 class="card-title">Nuevo Docente</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fas fa-minus"></i></button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fas fa-times"></i></button>
+                    <!--Espacio -->
                 </div>
               </div>
               <div class="card-body">
-                {!! Form::open(['route'=>['admin.store'],'method'=>'post', 'autocomplete' =>'off']) !!}
-                {!! Form::token() !!}
-                <div class="row">
+                    {!! Form::open(['route'=>['admin.store'],'method'=>'post', 'autocomplete' =>'off']) !!}
+                    {!! Form::token() !!}
+                    <div class="row">
                     <div class="col-md-3">
                     {!! Form::label('nombre', 'Nombre', ['class'=>'badge-primary']) !!}
-                    {!! Form::text('nombre', old('nombre'), ['class'=>'form-control']) !!}<br>
+                    {!! Form::text('nombre', old('nombre'), ['class'=>'form-control',"placeholder"=>"Nombre"]) !!}
                     </div>
                     <div class="col-md-3">
-                    {!! Form::label('email', 'Dirección de correo', ['class'=>'badge-primary']) !!}
-                    {!! Form::email('email', old('email'), ['class'=>'form-control']) !!}<br>
+                    {!! Form::label('seg_nombre', 'Segundo Nombre', ['class'=>'badge-primary']) !!}
+                    {!! Form::text('seg_nombre', old('seg_nombre'), ['class'=>'form-control',"placeholder"=>"Segundo Nombre"]) !!}
                     </div>
                     <div class="col-md-3">
-                        {!! Form::label('role', 'Roles', ['class'=>'badge-primary']) !!}
-                        {!! Form::select('role', $role, old('role'), ['class'=>'form-control','placeholder'=>'selecciona una opción']) !!}<br>
+                    {!! Form::label('apellido', 'Apellido', ['class'=>'badge-primary']) !!}
+                    {!! Form::text('apellido', old('apellido'), ['class'=>'form-control',"placeholder"=>"Apellido"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                    {!! Form::label('seg_apellido', 'Segundo Apellido', ['class'=>'badge-primary']) !!}
+                    {!! Form::text('seg_apellido', old('seg_apellido'), ['class'=>'form-control',"placeholder"=>"Segundo Apellido"]) !!}
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                    {!! Form::label('email', 'Dirección de Correo', ['class'=>'badge-primary']) !!}
+                    {!! Form::email('email', old('email'), ['class'=>'form-control',"placeholder"=>"Ejemplo@email.com"]) !!}
+                    </div>
+                    <div class="col-md-6">
+                    {!! Form::label('direccion', 'Dirección', ['class'=>'badge-primary']) !!}
+                    {!! Form::textarea('direccion', old('direccion'), ['class'=>'form-control',"rows"=>"0", "cols"=>"0",'placeholder'=>'Av,ejemplo,calle,ejemplo']) !!}
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-3">
+                    {!! Form::label('nacionalidad', 'Nacionalidad', ['class'=>'badge-primary']) !!}
+                    {!! Form::text('nacionalidad', old('nacionalidad'), ['class'=>'form-control',"placeholder"=>"Nacionalidad"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                    {!! Form::label('fecha', 'Fecha de Nacimiento', ['class'=>'badge-primary']) !!}
+                    {!! Form::date('fecha', old('fecha'), ['class'=>'form-control']) !!}
+                    </div>
+                    <div class="col-md-3">
+                    {!! Form::label('localidad', 'Localidad', ['class'=>'badge-primary']) !!}
+                    {!! Form::text('localidad', old('localidad'), ['class'=>'form-control',"placeholder"=>"Localidad"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                    {!! Form::label('role', 'Roles', ['class'=>'badge-primary']) !!}
+                    {!! Form::select('role', $role, old('role'), ['class'=>'form-control','placeholder'=>'selecciona una opción']) !!}
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-3">
+                    {!! Form::label('telefono', 'Teléfono', ['class'=>'badge-primary']) !!}
+                    {!! Form::tel('telefono', old('telefono'), ['class'=>'form-control',"placeholder"=>"04XX-xxx-xx-xx"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                    {!! Form::label('password', 'Contraseña', ['class'=>'badge-primary']) !!}
+                    {!! Form::password('password',['class'=>'form-control',"placeholder"=>"Contraseña"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                    {!! Form::label('passwords', 'Verificar Contraseña', ['class'=>'badge-primary']) !!}
+                    {!! Form::password('passwords', ['class'=>'form-control',"placeholder"=>"Verificar Contraseña"]) !!}
+                    </div>
+                    <div class="col-md-4">
+                        <br>
+                    {!! Form::submit('Registrar', ['class'=>'btn btn-success']) !!}
+                    {!!Form::reset('Borrar',['class'=>'btn btn-success']) !!}
+                    {!!link_to('home','Regresar',['class'=>'btn btn-success']) !!}
+                    {!! Form::close() !!}
+                    </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        {!! Form::label('password', 'Contraseña', ['class'=>'badge-primary']) !!}
-                        {!! Form::text('password', null, ['class'=>'form-control']) !!}<br>
-                        </div>
-                        <div class="col-md-3">
-                        {!! Form::label('passwords', 'Verificar Contraseña', ['class'=>'badge-primary']) !!}
-                        {!! Form::text('passwords', null, ['class'=>'form-control']) !!}<br>
-                        </div>
-                </div>
-                {!! Form::submit('Registrar', ['class'=>'btn btn-success']) !!}
-                {!!Form::reset('Borrar',['class'=>'btn btn-success'])!!}
-                {!!link_to('home','Regresar',['class'=>'btn btn-success'])!!}
-                {!! Form::close() !!}
-              </div>
               <!-- /.card-body -->
               <div class="card-footer">
                 Laravel 5.8.*

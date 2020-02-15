@@ -28,7 +28,15 @@ class AdminTableSeeder extends Seeder
         $role_admin = Role::where('nombre','administrador')->first();
 
         $user =User::create([
-            'nombre'=>'Administrador',
+            'nombre'=>'Eduardo',
+            'seg_nombre'=>'Pérez',
+            'apellido'=>'Villamizar',
+            'seg_apellido'=>'González',
+            'fecha'=>'2020-06-15',
+            'nacionalidad'=>'Venezolano',
+            'localidad'=>'Caracas',
+            'direccion'=>'https://github.com/fzaninotto/Faker',
+            'telefono'=>'04164618675',
             'email'=>'admin@email.com',
             'password'=> Hash::make('1234'),
             'created_at' => carbon::now()->format('Y-m-d H:i:s'),
@@ -36,9 +44,9 @@ class AdminTableSeeder extends Seeder
         ]);
         $user->roles()->attach($role_admin);
 
-        factory(User::class,15)->create()->each(function(User $user){
-            $user->roles()->attach(rand(1,2));
-        });
+        // factory(User::class,15)->create()->each(function(User $user){
+        //     $user->roles()->attach(rand(1,2));
+        // });
 
         //$role_docente = Role::where('nombre', 'docente')->first();
 

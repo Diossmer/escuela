@@ -84,10 +84,10 @@
                             <thead>
                               <tr>
                                 <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Creado</th>
-                                <th>Actualizado</th>
-                                <th>Roles</th>
+                                <th>Apellido</th>
+                                <th>Nacionalidad</th>
+                                <th>Rol</th>
+                                <th>Email</th>
                                 <th>Acción</th>
                               </tr>
                             </thead>
@@ -95,12 +95,12 @@
                                 @foreach ($admin as $admins)
                                     <tr>
                                     <td>{{$admins->nombre}}</td>
-                                    <td>{{$admins->email}}</td>
-                                    <td>{{$admins->created_at}}</td>
-                                    <td>{{$admins->updated_at}}</td>
+                                    <td>{{$admins->apellido}}</td>
+                                    <td>{{$admins->nacionalidad}}</td>
                                     <td>@foreach ($admins->roles as $role)
                                         {{$role->nombre}}
                                     @endforeach</td>
+                                    <td>{{$admins->email}}</td>
                                     <td>
                                         {!! Form::open(["route"=>["admin.destroy",$admins->id],"method"=>"delete"]) !!}
                                         {!! Form::token() !!}
@@ -112,8 +112,8 @@
                                 @endforeach
                             </tbody>
                           </table>
-                          {{$admin->links()}}
                         </div>
+                        {{$admin->links()}}
                         <!-- /.card-body -->
                       </div>
                       <!-- /.card -->

@@ -19,11 +19,12 @@
                     <li class="nav-item">
                         {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a> --}}
                     </li>
-                    @if (Route::has('register'))
+                    {{-- @if(!Auth::user()) --}}
+                    {{-- @if (Route::has('register'))
                         <li class="nav-item">
-                            {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a> --}}
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
-                    @endif
+                    @endif --}}
             @else
             <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -46,7 +47,7 @@
         </ul>
 
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
+        {{-- <form class="form-inline ml-3">
             <div class="input-group input-group-sm">
             <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
@@ -55,12 +56,12 @@
                 </button>
             </div>
             </div>
-        </form>
+        </form> --}}
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments"></i>
                 <span class="badge badge-danger navbar-badge">3</span>
@@ -148,7 +149,7 @@
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
                     <i class="fas fa-th-large"></i>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->nombre }} <span class="caret"></span>
