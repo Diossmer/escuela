@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -148,6 +149,6 @@ class AdminController extends Controller
     {
         //
         User::destroy($id);
-        return redirect()->back();
+        return redirect()->back()->with('admin','EL usuario se elimino exitosamente.');
     }
 }

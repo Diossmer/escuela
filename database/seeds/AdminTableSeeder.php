@@ -26,7 +26,7 @@ class AdminTableSeeder extends Seeder
         //     'updated_at' => carbon::now()->format('Y-m-d H:i:s'),
         // ]);
         $role_admin = Role::where('nombre','administrador')->first();
-        $role_docente = Role::where('nombre', 'docente')->first();
+
         $user =User::create([
             'nombre'=>'Administrador',
             'email'=>'admin@email.com',
@@ -35,13 +35,20 @@ class AdminTableSeeder extends Seeder
             'updated_at' => carbon::now()->format('Y-m-d H:i:s'),
         ]);
         $user->roles()->attach($role_admin);
-        $user =User::create([
-            'nombre'=>'Docente',
-            'email'=>'user@email.com',
-            'password'=> Hash::make('1234'),
-            'created_at' => carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => carbon::now()->format('Y-m-d H:i:s'),
-        ]);
-        $user->roles()->attach($role_docente);
+
+        factory(User::class,15)->create()->each(function(User $user){
+            $user->roles()->attach(rand(1,2));
+        });
+
+        //$role_docente = Role::where('nombre', 'docente')->first();
+
+        // $user =User::create([
+        //     'nombre'=>'Docente',
+        //     'email'=>'user@email.com',
+        //     'password'=> Hash::make('1234'),
+        //     'created_at' => carbon::now()->format('Y-m-d H:i:s'),
+        //     'updated_at' => carbon::now()->format('Y-m-d H:i:s'),
+        // ]);
+        //$user->roles()->attach($role_docente);
     }
 }

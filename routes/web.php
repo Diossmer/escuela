@@ -39,10 +39,8 @@ Route::group(['namespace'=>'User'], function () {
     Route::resource('docente','DocenteController',['except'=>['destroy']]);
 });
 
-//CREAR LA AUTORIZACION DE ROLES QUIEN ESTA AUTORIZADO AL CRUD
 //https://github.com/farhanwazir/laravelgooglemaps
 
-//preguntar antes de eliminar un rol
 //validar formulario...
 
 /* Cuando tengas el usuario colocar el rol */

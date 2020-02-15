@@ -65,8 +65,6 @@
               <div class="card-body">
 
 
-
-
                 <div class="row">
                     <div class="col-12">
                       <div class="card">
@@ -97,7 +95,7 @@
                                         {!! Form::open(["route"=>["admin.destroy",$admins->id],"method"=>"delete"]) !!}
                                         {!! Form::token() !!}
                                         {!! link_to_route("admin.edit", "Editar",$admins->id,["class"=>"btn btn-primary"]) !!}
-                                        {!! Form::submit("Eliminar", ["class"=>"btn btn-danger quest"]) !!}
+                                        {!! Form::submit("Eliminar", ["onclick"=>"return confirm('¿Seguro que quieres eliminar?')","class"=>"btn btn-danger"]) !!}
                                         {!! Form::close() !!}
                                     </td>
                                     </tr>
@@ -129,4 +127,15 @@
     <!-- /.content -->
 
 </div>
+<script type="text/javascript">
+    (function() {
+      var form = document.getElementById('miFormulario');
+      form.addEventListener('submit', function(event) {
+        // si es false entonces que no haga el submit
+        if (!confirm('Realmente desea eliminar?')) {
+          event.preventDefault();
+        }
+      }, false);
+    })();
+  </script>
 @endsection
