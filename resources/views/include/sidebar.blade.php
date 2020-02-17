@@ -17,9 +17,9 @@
         </div>
         <div class="info">
         @if(Auth::user()->hasAnyRole('administrador'))
-        <a href="{{route('admin.show',Auth::user()->id)}}" class="d-block">{{Auth::user()->nombre}}</a>
+        <a href="{{route('admin.show',Auth::user()->id)}}" class="d-block">{{Auth::user()->nombre}}&nbsp;{{Auth::user()->apellido}}</a>
         @else
-        <a href="{{route('docente.show',Auth::user()->id)}}" class="d-block">{{Auth::user()->nombre}}</a>
+        <a href="{{route('docente.show',Auth::user()->id)}}" class="d-block">{{Auth::user()->nombre}}&nbsp;{{Auth::user()->apellido}}</a>
         @endif
         </div>
       </div>
@@ -82,7 +82,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>
-                    Registros de datos
+                    Registrar
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -102,12 +102,12 @@
                 </ul>
               </li>
             @else
-            <li class="nav-item">
-                <a href="{{route('docente.index')}}" class="nav-link">
+            {{-- <li class="nav-item">
+                <a href="{{route('periodo.index')}}" class="nav-link">
                     <i class="fas fa-user nav-icon"></i>
-                  <p>Docente</p>
+                  <p>Planilla</p>
                 </a>
-              </li>
+              </li> --}}
             <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -118,7 +118,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('periodo.index')}}" class="nav-link">
                     <i class="fas fa-table nav-icon"></i>
                   <p>Período escolar</p>
                 </a>
@@ -146,13 +146,13 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-edit"></i>
                   <p>
-                    Registros de datos
+                    Registrar
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../forms/general.html" class="nav-link">
+                    <a href="{{route('periodo.create')}}" class="nav-link">
                         <i class="fas fa-file-alt nav-icon"></i>
                       <p>Período escolar</p>
                     </a>

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Docente\Docente;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model

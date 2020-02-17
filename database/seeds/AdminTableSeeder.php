@@ -44,19 +44,26 @@ class AdminTableSeeder extends Seeder
         ]);
         $user->roles()->attach($role_admin);
 
-        // factory(User::class,15)->create()->each(function(User $user){
-        //     $user->roles()->attach(rand(1,2));
-        // });
+        factory(User::class,50)->create()->each(function(User $user){
+            $user->roles()->attach(rand(1,2));
+        });
 
-        //$role_docente = Role::where('nombre', 'docente')->first();
+        $role_docente = Role::where('nombre', 'docente')->first();
 
-        // $user =User::create([
-        //     'nombre'=>'Docente',
-        //     'email'=>'user@email.com',
-        //     'password'=> Hash::make('1234'),
-        //     'created_at' => carbon::now()->format('Y-m-d H:i:s'),
-        //     'updated_at' => carbon::now()->format('Y-m-d H:i:s'),
-        // ]);
-        //$user->roles()->attach($role_docente);
+        $user =User::create([
+            'nombre'=>'Diossmer',
+            'seg_nombre'=>'Pérez',
+            'apellido'=>'Villamizar',
+            'seg_apellido'=>'González',
+            'fecha'=>'1993-12-14',
+            'nacionalidad'=>'Venezolano',
+            'localidad'=>'Caracas',
+            'direccion'=>'https://github.com/fzaninotto/Faker',
+            'email'=>'diossmer@gmail.com',
+            'password'=> Hash::make('1234'),
+            'created_at' => carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+        $user->roles()->attach($role_docente);
     }
 }

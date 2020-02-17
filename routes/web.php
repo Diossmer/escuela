@@ -35,8 +35,9 @@ Route::group(['middleware' => ['admin'], 'namespace'=>'Admin'], function () {
     Route::resource('roles', 'RoleController',['except'=>['show']]);
 });
 
-Route::group(['namespace'=>'User'], function () {
-    Route::resource('docente','DocenteController',['except'=>['destroy']]);
+Route::group(['namespace'=>'Docente'], function () {
+    Route::resource('docente','DocenteController',['except'=>['edit','index','store','update','create','destroy']]);
+    Route::resource('periodo','DocenteController',['except'=>['destroy','show']]);
 });
 
 //https://github.com/farhanwazir/laravelgooglemaps

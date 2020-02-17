@@ -33,10 +33,10 @@ class AdminVerification extends FormRequest
             'nacionalidad'=>'required',
             'localidad'=>'required',
             'direccion'=>'',
-            'telefono'=>'required|min:+0 02120000000|max:+99 04269999999',
-            'email'=>'required',
+            'telefono'=>'required|integer|min:000000000000|max:999999999999',
+            'email'=>'required|email|regex:/^.+@.+$/i',
             'role'=>'required',
-            'password'=>'required',
+            'password'=>'required|alpha_num',
         ];
     }
 }

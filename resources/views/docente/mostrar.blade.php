@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Periodo Escolar</h1>
+          <h1>{{$docente->nombre}} {{$docente->apellido}}</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -38,27 +38,20 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-                </div>
-                @elseif(session('admin'))
-                <div class="alert alert-info" role="alert">
-                    <li>{{session('admin')}}</li>
-                </div>
-                @endif
               <div class="card-header">
-                <h3 class="card-title">Periodo Escolar</h3>
+                <h3 class="card-title">{{$docente->roles[0]->nombre}}</h3>
+
                 <div class="card-tools">
 
                 </div>
               </div>
               <div class="card-body">
+
+
+                <p>Aqui va ir los alumnos con su sección y si esta activo o no?</p>
+
                 You are logged in!
+
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

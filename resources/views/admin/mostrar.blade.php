@@ -62,7 +62,7 @@
                             @if($admin->hasAnyRole('administrador'))
                             <td>{{$admin->nombre}}</td>
                             @else
-                            <td>{!! link_to("docente", $admin->nombre, $admin->id) !!}</td>
+                            <td>{!! link_to_route("docente.show", $admin->nombre, $admin->id) !!}</td>
                             @endif
                         </tr>
                         <tr>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Docente')
+@section('title','Periodo Escolar')
 @section('script-top')
     @parent
 @endsection
@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Docente</h1>
+            <h1>Periodo Escolar</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -38,9 +38,21 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+                </div>
+                @elseif(session('docente'))
+                <div class="alert alert-info" role="alert">
+                    <li>{{session('docente')}}</li>
+                </div>
+                @endif
               <div class="card-header">
-                <h3 class="card-title">Dashboard</h3>
-
+                <h3 class="card-title">Periodo Escolar</h3>
                 <div class="card-tools">
 
                 </div>
@@ -48,9 +60,39 @@
               <div class="card-body">
 
 
-
-
-
+                <table border="2" cellpadding="10">
+                    <thead align="center" valign="middle">
+                        <tr>
+                            <th align="center">Desde</th>
+                            <th>Fecha de inicio</th>
+                            <th>Hasta</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($periodo as $valore)
+                        <tr>
+                            <td>
+                            {{$valore->periodo_desde}}
+                            {{-- {{dd($resultado)}} --}}
+                            <progress id="progressbar" max="100" value="{{$valore->resultado + round((strtotime($carbon)/900/15000*0.5),2)}}" title="{{$valore->resultado + round((strtotime($carbon)/900/15000*0.5),2)}}%"></progress>
+                            {{$valore->resultado + round((strtotime($carbon)/900/15000*0.5),2)}}%
+                        </td>
+                        <td>
+                            {{$valore->fecha_inicio}}
+                        </td>
+                        <td>
+                            {{$valore->periodo_hasta}}
+                        </td>
+                        <td>
+                            {!! link_to_route("periodo.edit", "Editar", $valore->id, ["class"=>"btn btn-success"]) !!}
+                            {{-- {!! link_to_route("periodo.show", "Mostrar", $valore->id, ["class"=>"btn btn-dark"]) !!} --}}
+                        </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                {{$periodo->links()}}
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

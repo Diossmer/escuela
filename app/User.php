@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Docente\Periodo;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -51,5 +52,9 @@ class User extends Authenticatable
     public function scopeNombre($query,$nombre){
         if($nombre)
         return $query->where('nombre', 'LIKE', '%'.$nombre.'%');
+    }
+    /**DOCENTE, PERIODO, SECCION, REPRESENTANTE Y ALUMNO */
+    public function periodos(){
+        return $this->hasMany(Periodo::class);
     }
 }

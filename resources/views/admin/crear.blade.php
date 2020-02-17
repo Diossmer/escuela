@@ -111,7 +111,7 @@
                     <div class="row">
                     <div class="col-md-3">
                     {!! Form::label('telefono', 'Teléfono', ['class'=>'badge-primary']) !!}
-                    {!! Form::tel('telefono', old('telefono'), ['class'=>'form-control',"placeholder"=>"04XX-xxx-xx-xx"]) !!}
+                    {!! Form::tel('telefono', old('telefono'), ['class'=>'form-control',"placeholder"=>"+58426XXXxxXX"]) !!}
                     </div>
                     <div class="col-md-3">
                     {!! Form::label('password', 'Contraseña', ['class'=>'badge-primary']) !!}

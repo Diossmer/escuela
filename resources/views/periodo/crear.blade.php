@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Docente</h1>
+            <h1>Periodo Escolar</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -38,15 +38,53 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+                </div>
+                @elseif(session('admin'))
+                <div class="alert alert-info" role="alert">
+                    <li>{{session('admin')}}</li>
+                </div>
+                @endif
               <div class="card-header">
-                <h3 class="card-title">Dashboard</h3>
-
+                <h3 class="card-title">Periodo Escolar</h3>
                 <div class="card-tools">
 
                 </div>
               </div>
               <div class="card-body">
-                You are logged in!
+                {!! Form::open(['route'=>['periodo.store'],'method'=>'post', 'autocomplete'=>'off']) !!}
+                {!! Form::token() !!}
+                <div class="row">
+                    <div class="col-md-3">
+                        {!! Form::label("periodo_desde", "Periodo Desde", ["class"=>"label label-primary"]) !!}
+                        {!! Form::date("periodo_desde", old("periodo_desde"), ["class"=>"form-control","min"=>"2018-01-01"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                        {!! Form::label("periodo_hasta", "Periodo Hasta", ["class"=>"label label-primary"]) !!}
+                        {!! Form::date("periodo_hasta", old('periodo_hasta'), ["class"=>"form-control","min"=>"2018-01-01"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                        {!! Form::label("fecha_inicio", "Fecha de Inicio", ["class"=>"label label-primary"]) !!}
+                        {!! Form::date("fecha_inicio", $carbon, ["class"=>"form-control"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                        {!! Form::label("estatus", "Estatus", ["class"=>"label label-primary"]) !!}
+                        {!! Form::select("estatus", [
+                            "activo"=>"Activo",
+                            "regular"=>"Regular",
+                            "inactivo"=>"Inactivo"
+                        ], old("estatus"), ["class"=>"form-control","placeholder"=>"Seleccione una opción"]) !!}
+                    </div>
+                </div>
+                {!! Form::submit("Registrar", ["class"=>"btn btn-dark"]) !!}
+                {!! link_to_route("home", "Regresar",null,["class"=>"btn btn-success"]) !!}
+                {!! Form::close() !!}
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
