@@ -33,7 +33,6 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Panel de control
-                <span class="badge badge-info right">100</span>
               </p>
             </a>
           </li>
@@ -46,6 +45,7 @@
               <p>
                 Visualizar
                 <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">Total:{{Auth::user()->get()->count()}}</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
