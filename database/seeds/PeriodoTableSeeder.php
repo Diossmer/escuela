@@ -12,6 +12,6 @@ class PeriodoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Periodo::class,10)->create();
+        factory(Periodo::class,5)->create();
     }
 }

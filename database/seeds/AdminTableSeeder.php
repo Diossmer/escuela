@@ -44,7 +44,7 @@ class AdminTableSeeder extends Seeder
         ]);
         $user->roles()->attach($role_admin);
 
-        factory(User::class,50)->create()->each(function(User $user){
+        factory(User::class,10)->create()->each(function(User $user){
             $user->roles()->attach(rand(1,2));
         });
 
