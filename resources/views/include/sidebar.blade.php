@@ -75,6 +75,7 @@
                     <a href="{{route('roles.index')}}" class="nav-link">
                         <i class="fas fa-table nav-icon"></i>
                       <p>Roles</p>
+                      <span class="badge badge-info right">Total:{{\App\Role::get()->count()}}</span>
                     </a>
                   </li>
                 </ul>
