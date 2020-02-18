@@ -73,4 +73,11 @@ class RoleController extends Controller
         $role->users()->detach();
         return redirect('roles');
     }
+    public function destroy($id)
+    {
+        //
+        Role::destroy($id);
+
+        return redirect()->back()->with('admin','EL Rol se eliminó exitosamente.');
+    }
 }

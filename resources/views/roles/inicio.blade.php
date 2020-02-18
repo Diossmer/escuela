@@ -66,7 +66,11 @@
                     <tr>
                         <td>{{$roles->nombre}}</td>
                         <td>
+                        {!! Form::open(["route"=>["roles.destroy",$roles->id],"method"=>"delete"]) !!}
+                        {!! Form::token() !!}
                         {!! link_to_route("roles.edit", "Editar",$roles->id,["class"=>"btn btn-primary"]) !!}
+                        {!! Form::submit("Eliminar", ["onclick"=>"return confirm('¿Seguró que quieres eliminar $roles->nombre?')","class"=>"btn btn-danger"]) !!}
+                        {!! Form::close() !!}
                         </td>
                     </tr>
                 @endforeach
