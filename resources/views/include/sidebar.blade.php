@@ -45,7 +45,7 @@
               <p>
                 Visualizar
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">Total:{{Auth::user()->get()->count()}}</span>
+                {{-- <span class="badge badge-info right">Total:{{Auth::user()->get()->count()}}</span> --}}
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -53,12 +53,24 @@
                     <a href="{{route('admin.index')}}" class="nav-link">
                       <i class="nav-icon fas fa-user"></i>
                       <p>Director</p>
+                      <span class="badge badge-info right">Total:{{\App\User::join('role_user', function ($join) {
+                        $join->on('users.id', '=', 'role_user.user_id')
+                        ->where('role_user.role_id','=',1);})
+                        ->select('users.*')
+                        ->orderBy('created_at')
+                        ->get()->count()}}</span>
                     </a>
                   </li>
                 <li class="nav-item">
                 <a href="{{route('admin.user')}}" class="nav-link">
                     <i class="fas fa-user nav-icon"></i>
                   <p>Docente</p>
+                  <span class="badge badge-info right">Total:{{\App\User::join('role_user', function ($join) {
+                    $join->on('users.id', '=', 'role_user.user_id')
+                    ->where('role_user.role_id','>',1);})
+                    ->select('users.*')
+                    ->orderBy('created_at')
+                    ->get()->count()}}</span>
                 </a>
               </li>
             </ul>
