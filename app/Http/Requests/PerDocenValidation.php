@@ -24,8 +24,8 @@ class PerDocenValidation extends FormRequest
     public function rules()
     {
         return [
-            'periodo_desde'=>'required|min:2018-01-01|date',
-            'periodo_hasta'=>'required|min:2018-01-01|date',
+            'periodo_desde'=>'required|min:01-01-2018|date',
+            'periodo_hasta'=>'required|min:01-01-2018|date',
             'fecha_inicio'=>'required',
             'estatus'=>'required',
         ];

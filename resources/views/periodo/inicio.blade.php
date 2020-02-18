@@ -66,6 +66,7 @@
                             <th align="center">Desde</th>
                             <th>Fecha de inicio</th>
                             <th>Hasta</th>
+                            <th>Estatus</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
@@ -83,6 +84,9 @@
                         </td>
                         <td>
                             {{$valore->periodo_hasta}}
+                        </td>
+                        <td>
+                            {{$valore->estatus}}
                         </td>
                         <td>
                             {!! link_to_route("periodo.edit", "Editar", $valore->id, ["class"=>"btn btn-success"]) !!}

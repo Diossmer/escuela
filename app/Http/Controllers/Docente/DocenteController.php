@@ -50,7 +50,7 @@ class DocenteController extends Controller
         $date1=strtotime($request->fecha_inicio);
         $valor=round((($date2-$date1)/120/60/60),2);
         $resultado = $valor *30/100 ;
-        if($resultado>1 || $resultado<50){
+        if($resultado>1 || $resultado<100){
             $periodo = new Periodo();
             $periodo->periodo_desde=$request->periodo_desde;
             $periodo->periodo_hasta=$request->periodo_hasta;
