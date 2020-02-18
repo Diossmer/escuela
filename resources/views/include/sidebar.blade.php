@@ -124,7 +124,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route("seccion.index")}}" class="nav-link">
                     <i class="fas fa-table nav-icon"></i>
                   <p>Sección escolar</p>
                 </a>
@@ -158,19 +158,19 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../forms/general.html" class="nav-link">
+                    <a href="{{route("seccion.create")}}" class="nav-link">
                         <i class="fas fa-file-alt nav-icon"></i>
                       <p>Sección escolar</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../forms/general.html" class="nav-link">
+                    <a href="" class="nav-link">
                         <i class="fas fa-file-alt nav-icon"></i>
                       <p>Representante</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../forms/general.html" class="nav-link">
+                    <a href="" class="nav-link">
                         <i class="fas fa-file-alt nav-icon"></i>
                       <p>Alumno escolar</p>
                     </a>

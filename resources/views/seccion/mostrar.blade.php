@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Periodo Escolar</h1>
+            <h1>Mostrar</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -52,7 +52,7 @@
                 </div>
                 @endif
               <div class="card-header">
-                <h3 class="card-title">Periodo Escolar</h3>
+                <h3 class="card-title">Dashboard</h3>
                 <div class="card-tools">
 
                 </div>
