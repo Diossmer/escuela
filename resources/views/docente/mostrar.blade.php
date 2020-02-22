@@ -49,7 +49,7 @@
 
 
                 <p>Aqui va ir los alumnos con su sección y si esta activo o no?</p>
-
+              {{-- <p>{{dd($docente)}}</p> --}}
                 You are logged in!
 
               </div>

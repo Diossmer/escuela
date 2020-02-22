@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Docente\Seccion;
 use Illuminate\Http\Request;
 use App\User;
 class HomeController extends Controller
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $seccion=Seccion::select('descripcion','cupo')->get();
+        foreach ($seccion as $value) {
+            $value;
+        }
+        return view('home')->with('value',$value);
     }
 }

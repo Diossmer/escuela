@@ -60,7 +60,6 @@
                 </div>
               </div>
               <div class="card-body">
-
                 {!! Form::open(['route'=>['admin.update',$admin->id],'method'=>'put', 'autocomplete' =>'off']) !!}
                 {!! Form::token() !!}
                     <div class="row">

@@ -7,6 +7,7 @@ use App\Http\Requests\PerDocenValidation;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Docente\Periodo;
+use App\Docente\Seccion_user;
 use Carbon\Carbon;
 
 class DocenteController extends Controller
@@ -72,8 +73,9 @@ class DocenteController extends Controller
     {
         //DOCENTE
         $docente = User::find($id);
-        $periodo = Periodo::all();
-        return view('docente.mostrar',compact('docente','periodo'));
+        $periodo = Periodo::find($id);
+        $seccion = Seccion_user::find($id);
+        return view('docente.mostrar',compact('docente','periodo','seccion'));
     }
 
     /**

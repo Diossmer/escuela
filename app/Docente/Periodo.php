@@ -2,6 +2,7 @@
 
 namespace App\Docente;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Periodo extends Model
@@ -14,4 +15,7 @@ class Periodo extends Model
     protected $guarded=[];
 
     protected $date=['periodo_hasta','fecha_inicio','periodo_desde'];
+    public function docentes(){
+        return $this->belongsToMany(User::class);
+    }
 }

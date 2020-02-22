@@ -46,9 +46,9 @@
                 @endforeach
                 </ul>
                 </div>
-                @elseif(session('admin'))
+                @elseif(session('seccion'))
                 <div class="alert alert-info" role="alert">
-                    <li>{{session('admin')}}</li>
+                    <li>{{session('seccion')}}</li>
                 </div>
                 @endif
               <div class="card-header">
@@ -58,7 +58,50 @@
                 </div>
               </div>
               <div class="card-body">
-                You are logged in!
+                {!! Form::open(['route'=>['seccion.store'],'method'=>'post', 'autocomplete'=>'off']) !!}
+                {!! Form::token() !!}
+                <div class="row">
+                    <div class="col-md-2">
+                        {!! Form::label("descripcion", "Seccion", ["class"=>"label label-primary"]) !!}
+                        {!! Form::select("descripcion", [
+                            "A"=>"A",
+                            "B"=>"B",
+                            "C"=>"C",
+                            "D"=>"D"
+                            ], old("descripcion"), [
+                                "class"=>"form-control",
+                                "placeholder"=>"Selecciona la sección"
+                                ]) !!}
+                    </div>
+                    <div class="col-md-1">
+                        {!! Form::label("grado", "Grado", ["class"=>"label label-primary"]) !!}
+                        {!! Form::number("grado", old("grado"), ["class"=>"form-control",
+                        "placeholder"=>"1-6"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                        {!! Form::label("cupo", "Cupos Disponibles", ["class"=>"label label-primary"]) !!}
+                        {!! Form::number("cupo",old("cupo"), ["class"=>"form-control",
+                        "placeholder"=>"1-30"]) !!}
+                        {{-- {!! Form::select("cupo", [
+                            ""=>"",
+                            ""=>"",
+                            ""=>"",
+                            ""=>"",
+                            ""=>"",
+                            ""=>""
+                        ],old("cupo"), ["class"=>"form-control"]) !!} --}}
+                    </div>
+                    <div class="col-md-3">
+                        {!! Form::label("docente_id", "Docente", ["class"=>"label label-primary"]) !!}
+                        {!! Form::select("docente_id", $docente, $docente, ["Class"=>"form-control","placeholder"=>"Selecciona el docente"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                        {!! Form::label("periodo_id", "Periodo Inicio", ["class"=>"label label-primary"]) !!}
+                        {!! Form::select("periodo_id", $periodo, $periodo, ["Class"=>"form-control","placeholder"=>"Selecciona el año escolar"]) !!}
+                    </div>
+                </div>
+                {!! Form::submit("Enviar", ["class"=>"btn btn-dark"]) !!}
+                {!! Form::close() !!}
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

@@ -46,9 +46,9 @@
                 @endforeach
                 </ul>
                 </div>
-                @elseif(session('admin'))
+                @elseif(session('seccion'))
                 <div class="alert alert-info" role="alert">
-                    <li>{{session('admin')}}</li>
+                    <li>{{session('seccion')}}</li>
                 </div>
                 @endif
               <div class="card-header">
@@ -58,7 +58,30 @@
                 </div>
               </div>
               <div class="card-body">
-                You are logged in!
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Sección</th>
+                            <th>Grado</th>
+                            <th>Cupo Disponible</th>
+                            <th>Docente</th>
+                            <th>Periodo</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($seccion as $secciones)
+                            <tr>
+                                <td>{{$secciones->descripcion}}</td>
+                                <td>{{$secciones->grado}}</td>
+                                <td>{{$secciones->cupo}}</td>
+                                <td>{{$secciones->docente_id}}</td>
+                                <td>{{$secciones->periodo_id}}</td>
+                                <td>{!! link_to_route("seccion.edit", "Editar", $secciones->id, ["class"=>"btn btn-success"]) !!}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

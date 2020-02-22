@@ -115,12 +115,6 @@
                 </ul>
               </li>
             @else
-            {{-- <li class="nav-item">
-                <a href="{{route('periodo.index')}}" class="nav-link">
-                    <i class="fas fa-user nav-icon"></i>
-                  <p>Planilla</p>
-                </a>
-              </li> --}}
             <li class="nav-item has-treeview menu-close">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -189,6 +183,12 @@
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="fas fa-user nav-icon"></i>
+                  <p>Inscripción</p>
+                </a>
               </li>
             @endif
           <li class="nav-header">Archivo</li>

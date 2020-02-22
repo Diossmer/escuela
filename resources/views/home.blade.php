@@ -4,8 +4,8 @@
 @parent
 @endsection
 @section('script-bottom')
-<script type="text/javascript" src="{{asset("assets/js/charts/loader.js")}}"></script>
-<script type="text/javascript" src="{{asset("assets/js/charts/charts.js")}}"></script>
+{{-- <script type="text/javascript" src="{{asset("assets/js/charts/loader.js")}}"></script> --}}
+{{-- <script type="text/javascript" src="{{asset("assets/js/charts/charts.js")}}"></script> --}}
 @parent
 @endsection
 @section('style')
@@ -67,12 +67,49 @@
               </div>
               <div class="card-body">
                 <!--Div that will hold the pie chart-->
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-6"><div id="chart_div"></div></div>
-                </div>
+                </div> --}}
+
+
+                {{-- AQUI EL CHARTS --}}
+                <html>
+                    <head>
+                      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                      <script type="text/javascript">
+                        var cupo = <?php echo $value->cupo ?>;
+                        var descripcion = '<?php echo $value->descripcion ?>';
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+
+                          var data = google.visualization.arrayToDataTable([
+                            ['Seccion', 'Cupos Disponible'],
+                            // foreach para el dato php nativo
+                            [descripcion,cupo],
+                          ]);
+
+                          var options = {
+                            title: 'Mostrar seccion y cupos'
+                          };
+
+                          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                          chart.draw(data, options);
+                        }
+                      </script>
+                    </head>
+                    <body>
+                      <div id="piechart" style="width: 900px; height: 500px;"></div>
+                    </body>
+                  </html>
+                {{-- AQUI FINALIZA CHARTS --}}
+
+
               </div>
               <!-- /.card-body -->
-              <div class="card-footer">
+            <div class="card-footer">
                 Laravel 5.8.*
               </div>
               <!-- /.card-footer-->
