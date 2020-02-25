@@ -60,23 +60,26 @@
               <div class="card-body">
                 <table class="table table-hover">
                     <thead>
-                        <tr>
+                        <tr align="center">
                             <th>Sección</th>
                             <th>Grado</th>
                             <th>Cupo Disponible</th>
-                            <th>Docente</th>
+                            {{-- <th>Docente</th> --}}
                             <th>Periodo</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($seccion as $secciones)
-                            <tr>
+                            <tr align="center">
                                 <td>{{$secciones->descripcion}}</td>
                                 <td>{{$secciones->grado}}</td>
                                 <td>{{$secciones->cupo}}</td>
-                                <td>{{$secciones->docente_id}}</td>
-                                <td>{{$secciones->periodo_id}}</td>
+                                <td>Desde: {{$secciones->periodos->periodo_desde}} || Hasta: {{$secciones->periodos->periodo_hasta}}</td>
+                                {{-- <td>{{$secciones->user->nombre}}</td> --}}
+                                {{-- <td>@foreach ($secciones->periodos as $periodo)
+                                    desde: {{$periodo->periodo_desde}} hasta: {{$periodo->periodo_hasta}}
+                                @endforeach</td> --}}
                                 <td>{!! link_to_route("seccion.edit", "Editar", $secciones->id, ["class"=>"btn btn-success"]) !!}</td>
                             </tr>
                         @endforeach

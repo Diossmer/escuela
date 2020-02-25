@@ -67,6 +67,7 @@
                             <th>Fecha de inicio</th>
                             <th>Hasta</th>
                             <th>Estatus</th>
+                            <th>Docentes</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
@@ -89,8 +90,10 @@
                             {{$valore->estatus}}
                         </td>
                         <td>
+                            {{$valore->users->nombre}}
+                        </td>
+                        <td>
                             {!! link_to_route("periodo.edit", "Editar", $valore->id, ["class"=>"btn btn-success"]) !!}
-                            {{-- {!! link_to_route("periodo.show", "Mostrar", $valore->id, ["class"=>"btn btn-dark"]) !!} --}}
                         </td>
                         </tr>
                     @endforeach

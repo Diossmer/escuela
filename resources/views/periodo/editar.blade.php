@@ -82,8 +82,17 @@
                         ], $periodo->estatus, ["class"=>"form-control","placeholder"=>"Seleccione una opción"]) !!}
                     </div>
                 </div>
-                {!! Form::submit("Actualizar", ["class"=>"btn btn-dark"]) !!}
-                {!! link_to_route("periodo.index", "Regresar",null,["class"=>"btn btn-success"]) !!}
+                <div class="row">
+                    <div class="col-md-3">
+                        {!! Form::label("docente_id", "Docentes", ["class"=>"label lablel-primary"]) !!}
+                        {!! Form::select("docente_id", $docente, $docente, ["class"=>"form-control","placeholder"=>"Seleccione una opción"]) !!}
+                    </div>
+                    <div class="col-md-3">
+                        <br>
+                        {!! Form::submit("Actualizar", ["class"=>"btn btn-dark"]) !!}
+                        {!! link_to_route("periodo.index", "Regresar",null,["class"=>"btn btn-success",]) !!}
+                    </div>
+                </div>
                 {!! Form::close() !!}
               </div>
               <!-- /.card-body -->

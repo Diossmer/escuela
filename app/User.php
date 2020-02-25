@@ -2,7 +2,8 @@
 
 namespace App;
 
-use App\Docente\Seccion_user;
+use App\Docente\Periodo;
+use App\Docente\Seccion;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -40,7 +41,7 @@ class User extends Authenticatable
     ];
 
     public function roles(){
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class,"role_user");
     }
 
     public function hasAnyRoles($roles){
@@ -53,8 +54,13 @@ class User extends Authenticatable
         if($nombre)
         return $query->where('nombre', 'LIKE', '%'.$nombre.'%');
     }
-    /* DOCENTE, PERIODO, SECCION, REPRESENTANTE Y ALUMNO */
-    public function seccions(){
-        return $this->belongsToMany(Seccion_user::class);
+    /*** DOCENTE, PERIODO, SECCION, REPRESENTANTE Y ALUMNO ***/
+
+    public function periodo()
+    {
+        return $this->hasMany('App\Docente\Periodo','docente_id');
+    }
+    public function userPeriodo(){
+        return $this->hasOneThrough(Seccion::class,Periodo::class,'docente_id','periodo_id');
     }
 }

@@ -93,10 +93,10 @@
                             ""=>""
                         ],$seccion->cupo, ["class"=>"form-control"]) !!} --}}
                     </div>
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         {!! Form::label("docente_id", "Docente", ["class"=>"label label-primary"]) !!}
                         {!! Form::select("docente_id", $docente, $docente, ["Class"=>"form-control"]) !!}
-                    </div>
+                    </div> --}}
                     <div class="col-md-3">
                         {!! Form::label("periodo_id", "Periodo Inicio", ["class"=>"label label-primary"]) !!}
                         {!! Form::select("periodo_id", $periodo, $periodo, ["Class"=>"form-control"]) !!}

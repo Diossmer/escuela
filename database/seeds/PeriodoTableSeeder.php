@@ -1,6 +1,7 @@
 <?php
 
 use App\Docente\Periodo;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class PeriodoTableSeeder extends Seeder

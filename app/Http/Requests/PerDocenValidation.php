@@ -28,6 +28,7 @@ class PerDocenValidation extends FormRequest
             'periodo_hasta'=>'required|min:01-01-2018|date',
             'fecha_inicio'=>'required',
             'estatus'=>'required',
+            'docente_id'=>'required',
         ];
     }
 }

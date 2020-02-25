@@ -46,11 +46,15 @@
                 </div>
               </div>
               <div class="card-body">
+              <h4>Perido</h4>
+                @foreach (@$docente->periodo as $periodos)
+                    <p><b>Desde el</b> {{@$periodos->periodo_desde}} <b>Hasta el</b> {{@$periodos->periodo_hasta}}</p>
+                @endforeach
+              <h3>Secciones</h3>
+                Seccion:{{@$docente->userPeriodo->descripcion}} Grado: {{@$docente->userPeriodo->grado}}
+              <h3>Representante</h3>
 
-
-                <p>Aqui va ir los alumnos con su sección y si esta activo o no?</p>
-              {{-- <p>{{dd($docente)}}</p> --}}
-                You are logged in!
+              <h3>Alumno</h3>
 
               </div>
               <!-- /.card-body -->

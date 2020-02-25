@@ -25,6 +25,10 @@ class SeccionVerification extends FormRequest
     {
         return [
             //
+            "descripcion"=>"required",
+            "grado"=>"required|min:0|max:6",
+            "cupo"=>"required|min:0|max:30",
+            "periodo_id"=>"required"
         ];
     }
 }

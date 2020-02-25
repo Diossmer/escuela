@@ -7,7 +7,6 @@ use App\Http\Requests\PerDocenValidation;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Docente\Periodo;
-use App\Docente\Seccion_user;
 use Carbon\Carbon;
 
 class DocenteController extends Controller
@@ -35,7 +34,13 @@ class DocenteController extends Controller
     {
         //PERIODO
         $carbon= Carbon::now()->format('Y-m-d');
-        return view('periodo.crear',compact('carbon'));
+        $docente = User::join('role_user', function ($join) {
+            $join->on('users.id', '=', 'role_user.user_id')
+            ->where('role_user.role_id','>',1);})
+            ->select('users.*')
+            ->orderBy('nombre','Asc')
+            ->pluck('nombre','id');
+        return view('periodo.crear',compact('carbon','docente'));
     }
 
     /**
@@ -56,6 +61,8 @@ class DocenteController extends Controller
             $periodo->periodo_desde=$request->periodo_desde;
             $periodo->periodo_hasta=$request->periodo_hasta;
             $periodo->fecha_inicio=$request->fecha_inicio;
+            $periodo->estatus=$request->estatus;
+            $periodo->docente_id=$request->docente_id;
             $periodo->resultado=$resultado;
             $periodo->save();
             return redirect('periodo')->with('docente','Periodo Escolar, Creado con éxito.');
@@ -73,9 +80,7 @@ class DocenteController extends Controller
     {
         //DOCENTE
         $docente = User::find($id);
-        $periodo = Periodo::find($id);
-        $seccion = Seccion_user::find($id);
-        return view('docente.mostrar',compact('docente','periodo','seccion'));
+        return view('docente.mostrar',compact('docente'));
     }
 
     /**
@@ -88,7 +93,13 @@ class DocenteController extends Controller
     {
         //PERIODO
         $periodo = Periodo::find($id);
-        return view('periodo.editar',compact('periodo'));
+        $docente = User::find($id)->join('role_user', function ($join) {
+            $join->on('users.id', '=', 'role_user.user_id')
+            ->where('role_user.role_id','>',1);})
+            ->select('users.*')
+            ->orderBy('nombre','Asc')
+            ->pluck('nombre','id');
+        return view('periodo.editar',compact('periodo','docente'));
     }
 
     /**
@@ -110,6 +121,8 @@ class DocenteController extends Controller
             $periodo->periodo_desde=$request->periodo_desde;
             $periodo->periodo_hasta=$request->periodo_hasta;
             $periodo->fecha_inicio=$request->fecha_inicio;
+            $periodo->estatus=$request->estatus;
+            $periodo->docente_id=$request->docente_id;
             $periodo->resultado=$resultado;
             $periodo->save();
             return redirect('periodo')->with('docente','Periodo Escolar, Acualizado con éxito.');

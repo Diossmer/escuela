@@ -67,7 +67,9 @@
                             "A"=>"A",
                             "B"=>"B",
                             "C"=>"C",
-                            "D"=>"D"
+                            "D"=>"D",
+                            "E"=>"E",
+                            "F"=>"F"
                             ], old("descripcion"), [
                                 "class"=>"form-control",
                                 "placeholder"=>"Selecciona la sección"
@@ -82,18 +84,6 @@
                         {!! Form::label("cupo", "Cupos Disponibles", ["class"=>"label label-primary"]) !!}
                         {!! Form::number("cupo",old("cupo"), ["class"=>"form-control",
                         "placeholder"=>"1-30"]) !!}
-                        {{-- {!! Form::select("cupo", [
-                            ""=>"",
-                            ""=>"",
-                            ""=>"",
-                            ""=>"",
-                            ""=>"",
-                            ""=>""
-                        ],old("cupo"), ["class"=>"form-control"]) !!} --}}
-                    </div>
-                    <div class="col-md-3">
-                        {!! Form::label("docente_id", "Docente", ["class"=>"label label-primary"]) !!}
-                        {!! Form::select("docente_id", $docente, $docente, ["Class"=>"form-control","placeholder"=>"Selecciona el docente"]) !!}
                     </div>
                     <div class="col-md-3">
                         {!! Form::label("periodo_id", "Periodo Inicio", ["class"=>"label label-primary"]) !!}
@@ -115,6 +105,5 @@
       </div>
     </section>
     <!-- /.content -->
-
 </div>
 @endsection

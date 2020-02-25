@@ -28,6 +28,6 @@ class HomeController extends Controller
         foreach ($seccion as $value) {
             $value;
         }
-        return view('home')->with('value',$value);
+        return view('home');
     }
 }

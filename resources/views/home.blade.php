@@ -77,17 +77,19 @@
                     <head>
                       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                       <script type="text/javascript">
-                        var cupo = <?php echo $value->cupo ?>;
-                        var descripcion = '<?php echo $value->descripcion ?>';
+                        // var cupo = "echo $value->cupo";
+                        // var descripcion = 'echo $value->descripcion';
                         google.charts.load('current', {'packages':['corechart']});
                         google.charts.setOnLoadCallback(drawChart);
 
                         function drawChart() {
+                            var valor = 2;
 
                           var data = google.visualization.arrayToDataTable([
                             ['Seccion', 'Cupos Disponible'],
                             // foreach para el dato php nativo
-                            [descripcion,cupo],
+                            ['Propiedades', valor]
+                            // [descripcion,cupo],
                           ]);
 
                           var options = {

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSeccionUserTable extends Migration
+class CreateSeccionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateSeccionUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('seccion_user', function (Blueprint $table) {
+        Schema::create('seccions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('descripcion');
             $table->integer('grado');
             $table->integer('cupo');
-            $table->unsignedBigInteger('docente_id');
-            $table->foreign('docente_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('periodo_id');
             $table->foreign('periodo_id')->references('id')->on('periodos')->onDelete('cascade');
             $table->timestamps();
@@ -33,6 +31,6 @@ class CreateSeccionUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seccion_user');
+        Schema::dropIfExists('seccions');
     }
 }

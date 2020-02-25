@@ -7,6 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(Seccion::class, function (Faker $faker) {
     return [
-        //
+        // "descripcion"=>,
+        // "grado"=>,
+        // "cupo"=>,
+        // "docente_id"=>,
     ];
 });

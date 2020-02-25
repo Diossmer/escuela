@@ -20,6 +20,8 @@ class CreatePeriodosTable extends Migration
             $table->date('fecha_inicio');
             $table->decimal('resultado')->nullable();
             $table->enum('estatus',['activo','inactivo','regular']);
+            $table->unsignedBigInteger('docente_id');
+            $table->foreign('docente_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
