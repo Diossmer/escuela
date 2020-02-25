@@ -137,13 +137,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route("representante.index")}}" class="nav-link">
                     <i class="fas fa-table nav-icon"></i>
                   <p>Representante</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route("alumno.index")}}" class="nav-link">
                     <i class="fas fa-table nav-icon"></i>
                   <p>Alumno escolar</p>
                 </a>
@@ -171,13 +171,13 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{route("representante.create")}}" class="nav-link">
                         <i class="fas fa-file-alt nav-icon"></i>
                       <p>Representante</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{route("alumno.create")}}" class="nav-link">
                         <i class="fas fa-file-alt nav-icon"></i>
                       <p>Alumno escolar</p>
                     </a>

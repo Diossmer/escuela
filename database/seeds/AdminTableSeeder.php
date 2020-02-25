@@ -59,6 +59,7 @@ class AdminTableSeeder extends Seeder
             'nacionalidad'=>'Venezolano',
             'localidad'=>'Caracas',
             'direccion'=>'https://github.com/fzaninotto/Faker',
+            'telefono'=>'04164618675',
             'email'=>'diossmer@gmail.com',
             'password'=> Hash::make('1234'),
             'created_at' => carbon::now()->format('Y-m-d H:i:s'),

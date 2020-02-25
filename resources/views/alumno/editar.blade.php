@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Crear')
+@section('title','Editar')
 @section('script-top')
     @parent
 @endsection
@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Nuevo Role</h1>
+            <h1>Editar Roles</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -38,38 +38,29 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-                </div>
-                @elseif(session('admin'))
-                <div class="alert alert-info" role="alert">
-                    <li>{{session('admin')}}</li>
-                </div>
-                @endif
               <div class="card-header">
-                <h3 class="card-title">Crear Nuevo</h3>
+                <h3 class="card-title">Roles</h3>
 
                 <div class="card-tools">
 
                 </div>
               </div>
               <div class="card-body">
-                {!! Form::open(['route'=>['roles.store'],'method'=>'post', 'autocomplete' =>'off']) !!}
+
+
+                {!! Form::open(['route'=>['roles.update',$role->id],'method'=>'put', 'autocomplete' =>'off']) !!}
                 {!! Form::token() !!}
                 <div class="row">
                     <div class="col-md-3">
                     {!! Form::label('nombre', 'Nombre', ['class'=>'badge-primary']) !!}
-                    {!! Form::text('nombre', old('nombre'), ['class'=>'form-control']) !!}<br>
+                    {!! Form::text('nombre', $role->nombre, ['class'=>'form-control']) !!}<br>
                     </div>
                 </div>
-                {!! Form::submit('Registrar', ['class'=>'btn btn-success']) !!}
-                {!!link_to('home','Regresar',['class'=>'btn btn-success'])!!}
+                {!! Form::submit('Actualizar', ['class'=>'btn btn-success']) !!}
+                {!! link_to('home', 'Volver', ['class'=>'btn btn-success']) !!}
                 {!! Form::close() !!}
+
+
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

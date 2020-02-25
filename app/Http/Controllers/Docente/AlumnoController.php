@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Docente;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Role;
 
-class RoleController extends Controller
+class AlumnoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class RoleController extends Controller
     public function index()
     {
         //
-        $role = Role::all();
-        return view('roles.inicio',compact('role'));
+        return view('alumno.inicio');
     }
 
     /**
@@ -28,7 +26,7 @@ class RoleController extends Controller
     public function create()
     {
         //
-        return view('roles.crear');
+        return view('alumno.crear');
     }
 
     /**
@@ -40,8 +38,19 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         //
-        Role::create(['nombre'=>$request->nombre]);
-        return redirect('roles')->with('admin','Exito.');
+        return redirect('alumno');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+        return view('alumno.mostrar');
     }
 
     /**
@@ -53,8 +62,7 @@ class RoleController extends Controller
     public function edit($id)
     {
         //
-        $role = Role::find($id);
-        return view('roles.editar',compact('role'));
+        return view('alumno.editar');
     }
 
     /**
@@ -67,17 +75,18 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $role=Role::find($id);
-        $role->nombre = $request->nombre;
-        $role->save();
-        $role->users()->detach();
-        return redirect('roles')->with('admin','Actualizado');
+        return redirect('alumno');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         //
-        Role::destroy($id);
-
-        return redirect()->back()->with('admin','EL Rol se eliminó exitosamente.');
+        return redirect('alumno');
     }
 }

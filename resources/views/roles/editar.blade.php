@@ -38,6 +38,19 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+                </div>
+                @elseif(session('admin'))
+                <div class="alert alert-info" role="alert">
+                    <li>{{session('admin')}}</li>
+                </div>
+                @endif
               <div class="card-header">
                 <h3 class="card-title">Roles</h3>
 

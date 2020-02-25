@@ -38,20 +38,6 @@
           <div class="col-12">
             <!-- Default box -->
             <div class="card">
-              <div class="card-header">
-        <h3 class="card-title">Roles</h3>
-
-        <div class="card-tools">
-
-        </div>
-      </div>
-      <div class="card-body">
-
-
-
-        <div class="row">
-            <div class="col-12">
-              <div class="card">
                 @if ($errors->any())
                 <div class="alert alert-danger">
                 <ul>
@@ -65,41 +51,50 @@
                     <li>{{session('admin')}}</li>
                 </div>
                 @endif
+              <div class="card-header">
+        <h3 class="card-title">Roles</h3>
+
+        <div class="card-tools">
+            {!! Form::open(['route'=>['admin.index'],'method'=>'get','class'=>'form-inline ml-3']) !!}
+            <div class="input-group input-group-sm">
+            {!! Form::text("nombre", old('nombre'), ['class'=>'form-control form-control-navbar',"placeholder"=>"Buscar"]) !!}
+            <div class="input-group-append">
+                    {!! Form::button(null,["class"=>"fas fa-search btn-warning",'type'=>'submit']) !!}
+            </div>
+            </div>
+        {!! Form::close() !!}
+        </div>
+      </div>
+      <div class="card-body">
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover text-nowrap">
                     <thead>
-                      <tr>
-                    <th>Roles</th>
-                    <th>Acción</th>
-                  </tr>
+                        <tr valing="middle" align="center">
+                            <th>nombre</th>
+                            <th>apellido</th>
+                            <th>cedula</th>
+                            <th>Dirección de correo</th>
+                            <th>telefono</th>
+                            <th>accion</th>
+                        </tr>
                 </thead>
                 <tbody>
-                @foreach ($role as $roles)
-                    <tr>
-                        <td>{{$roles->nombre}}</td>
-                        <td>
-                        {!! Form::open(["route"=>["roles.destroy",$roles->id],"method"=>"delete"]) !!}
-                        {!! Form::token() !!}
-                        {!! link_to_route("roles.edit", "Editar",$roles->id,["class"=>"btn btn-primary"]) !!}
-                        {!! Form::submit("Eliminar", ["onclick"=>"return confirm('¿Seguró que quieres eliminar $roles->nombre?')","class"=>"btn btn-danger"]) !!}
-                        {!! Form::close() !!}
-                        </td>
-                    </tr>
-                @endforeach
+                    @foreach ($representante as $representantes)
+                        <tr valing="middle" align="center">
+                            <td>{{$representantes->nombre}}</td>
+                            <td>{{$representantes->apellido}}</td>
+                            <td>{{$representantes->cedula}}</td>
+                            <td>{{$representantes->email}}</td>
+                            <td>{{$representantes->telefono}}</td>
+                            <td>{!! link_to_route("representante.edit", "Edit", $representantes->id, ['class'=>'btn btn-success']) !!}
+                            {!! link_to_route("representante.show", "Mostrar", $representantes->id, ['class'=>'btn btn-dark']) !!}</td>
+                        </tr>
+                    @endforeach
                 </div>
                 </div>
                 </tbody>
               </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-                    </div>
-                  </div>
 
-
-
-              </div>
               <!-- /.card-body -->
               <div class="card-footer">
                 Laravel 5.8.*
@@ -112,6 +107,5 @@
       </div>
     </section>
     <!-- /.content -->
-
 </div>
 @endsection
