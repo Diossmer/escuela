@@ -53,7 +53,7 @@
                 </div>
               </div>
               <div class="card-body">
-                MOSTRAR
+                SWITCH PARA LA SECCION Y LA EJECUCION EL CUPO RESTANDO EL INGRESO DEL ALUMNO
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

@@ -24,4 +24,7 @@ class Representante extends Model
             return $query->where('nombre', 'LIKE', '%'.$nombres.'%');
         }
     }
+    public function alumno(){
+        return $this->belongsTo(Representante::class,'representante_id');
+    }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlumnoDocenteTable extends Migration
+class CreateAlumnoSeccionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAlumnoDocenteTable extends Migration
      */
     public function up()
     {
-        Schema::create('alumno_docente', function (Blueprint $table) {
+        Schema::create('alumno_seccion', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('docente_id');
-            $table->foreign('docente_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('seccion_id');
+            $table->foreign('seccion_id')->references('id')->on('seccions')->onDelete('cascade');
             $table->unsignedBigInteger('alumno_id');
             $table->foreign('alumno_id')->references('id')->on('alumnos')->onDelete('cascade');
             $table->timestamps();
@@ -30,6 +30,6 @@ class CreateAlumnoDocenteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alumno_docente');
+        Schema::dropIfExists('alumno_seccion');
     }
 }

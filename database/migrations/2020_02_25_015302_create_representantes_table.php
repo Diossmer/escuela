@@ -28,6 +28,8 @@ class CreateRepresentantesTable extends Migration
             $table->string('lugar_trabajo');
             $table->string('telefono');
             $table->string('sexo');
+            $table->unsignedBigInteger('docente_id');
+            $table->foreign('docente_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

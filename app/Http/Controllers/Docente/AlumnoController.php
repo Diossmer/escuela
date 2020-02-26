@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Docente;
 
+use App\Docente\Alumno;
+use App\Docente\Representante;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +17,8 @@ class AlumnoController extends Controller
     public function index()
     {
         //
-        return view('alumno.inicio');
+        $alumno = Alumno::paginate(5);
+        return view('alumno.inicio',compact('alumno'));
     }
 
     /**
@@ -26,7 +29,8 @@ class AlumnoController extends Controller
     public function create()
     {
         //
-        return view('alumno.crear');
+        $representante=Representante::pluck('nombre','id');
+        return view('alumno.crear',compact('representante'));
     }
 
     /**
@@ -38,7 +42,34 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         //
-        return redirect('alumno');
+        if($request->hasFile('fotos')){
+            $archivo=Request()->except('_token');
+            $archivo = $request->file('fotos');
+            $nombre= time().$archivo->getClientOriginalName();
+            $archivo->move(public_path().'/images/',$nombre);
+        }
+
+        $alumno = new Alumno();
+        $alumno->fotos=$nombre;
+        $alumno->nombre = $request->nombre;
+        $alumno->segundo_nombre = $request->segundo_nombre;
+        $alumno->apellido = $request->apellido;
+        $alumno->segundo_apellido = $request->segundo_apellido;
+        $alumno->lugar_nacimiento = $request->lugar_nacimiento;
+        $alumno->direccion = $request->direccion;
+        $alumno->fecha = $request->fecha;
+        $alumno->cedula = $request->cedula;
+        $alumno->email = $request->email;
+        $alumno->sexo = $request->sexo;
+        $alumno->camisa = $request->camisa;
+        $alumno->pantalon = $request->pantalon;
+        $alumno->zapato = $request->zapato;
+        $alumno->enfermedades_padecida = $request->enfermedades_padecida;
+        $alumno->enfermedades_psicologica = $request->enfermedades_psicologica;
+        $alumno->representante_id = $request->representante_id;
+        if($alumno->save()){
+            return redirect('alumno')->with('alumno','Registro con exito.');
+        }
     }
 
     /**
@@ -50,7 +81,8 @@ class AlumnoController extends Controller
     public function show($id)
     {
         //
-        return view('alumno.mostrar');
+        $alumno=Alumno::find($id);
+        return view('alumno.mostrar',compact('alumno'));
     }
 
     /**
@@ -62,7 +94,9 @@ class AlumnoController extends Controller
     public function edit($id)
     {
         //
-        return view('alumno.editar');
+        $alumno=Alumno::find($id);
+        $representante=Representante::pluck('nombre','id');
+        return view('alumno.editar',compact('alumno','representante'));
     }
 
     /**
@@ -75,7 +109,33 @@ class AlumnoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        return redirect('alumno');
+        $alumno = Alumno::find($alumno);
+        if($request->hasFile('fotos')){
+            // $archivo=Request()->except('_token');
+            $archivo = $request->file('fotos');
+            $nombre= time().$archivo->getClientOriginalName();
+            $nombre=$alumno->fotos;
+            $archivo->move(public_path().'/images/',$nombre);
+        }
+        $alumno->nombre = $request->nombre;
+        $alumno->segundo_nombre = $request->segundo_nombre;
+        $alumno->apellido = $request->apellido;
+        $alumno->segundo_apellido = $request->segundo_apellido;
+        $alumno->lugar_nacimiento = $request->lugar_nacimiento;
+        $alumno->direccion = $request->direccion;
+        $alumno->fecha = $request->fecha;
+        $alumno->cedula = $request->cedula;
+        $alumno->email = $request->email;
+        $alumno->sexo = $request->sexo;
+        $alumno->camisa = $request->camisa;
+        $alumno->pantalon = $request->pantalon;
+        $alumno->zapato = $request->zapato;
+        $alumno->enfermedades_padecida = $request->enfermedades_padecida;
+        $alumno->enfermedades_psicologica = $request->enfermedades_psicologica;
+        $alumno->representante_id = $request->representante_id;
+        if($alumno->save()){
+            return redirect('alumno')->with('alumno','Actualización con exito.');
+        }
     }
 
     /**

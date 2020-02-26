@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Roles</h1>
+            <h1>Alumno</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -52,7 +52,7 @@
                 </div>
                 @endif
               <div class="card-header">
-        <h3 class="card-title">Roles</h3>
+        <h3 class="card-title">Alumno</h3>
 
         <div class="card-tools">
             {!! Form::open(['route'=>['admin.index'],'method'=>'get','class'=>'form-inline ml-3']) !!}
@@ -70,24 +70,25 @@
                   <table class="table table-hover text-nowrap">
                     <thead>
                         <tr valing="middle" align="center">
+                            <th>fotos</th>
                             <th>nombre</th>
                             <th>apellido</th>
-                            <th>cedula</th>
-                            <th>Dirección de correo</th>
-                            <th>telefono</th>
+                            <th>fecha de nacimiento</th>
+                            <th>representante</th>
                             <th>accion</th>
                         </tr>
                 </thead>
                 <tbody>
-                    @foreach ($representante as $representantes)
+                    @foreach ($alumno as $alumnos)
                         <tr valing="middle" align="center">
-                            <td>{{$representantes->nombre}}</td>
-                            <td>{{$representantes->apellido}}</td>
-                            <td>{{$representantes->cedula}}</td>
-                            <td>{{$representantes->email}}</td>
-                            <td>{{$representantes->telefono}}</td>
-                            <td>{!! link_to_route("representante.edit", "Edit", $representantes->id, ['class'=>'btn btn-success']) !!}
-                            {!! link_to_route("representante.show", "Mostrar", $representantes->id, ['class'=>'btn btn-dark']) !!}</td>
+                            <td><img src="/images/{{$alumnos->fotos}}" alt="" height="100" width="100"></td>
+                            <td>{{$alumnos->nombre}}</td>
+                            <td>{{$alumnos->apellido}}</td>
+                            <td>{{$alumnos->fecha}}</td>
+                            <td>{{$alumnos->representante_id}}</td>
+                            {{-- <td>edad</td> --}}
+                            <td>{!! link_to_route("representante.edit", "Edit", $alumnos->id, ['class'=>'btn btn-success']) !!}
+                            {!! link_to_route("representante.show", "Mostrar", $alumnos->id, ['class'=>'btn btn-dark']) !!}</td>
                         </tr>
                     @endforeach
                 </div>
