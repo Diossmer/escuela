@@ -185,7 +185,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('inscripcion.index')}}" class="nav-link">
                     <i class="fas fa-user nav-icon"></i>
                   <p>Inscripción</p>
                 </a>
