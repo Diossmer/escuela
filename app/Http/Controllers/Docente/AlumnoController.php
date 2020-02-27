@@ -6,6 +6,7 @@ use App\Docente\Alumno;
 use App\Docente\Representante;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AlumnoValidation;
 
 class AlumnoController extends Controller
 {
@@ -14,10 +15,12 @@ class AlumnoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $alumno = Alumno::paginate(5);
+        $nombres = $request->nombre;
+
+        $alumno = Alumno::where('nombre','like','%'.$nombres.'%')->orderBy('nombre','Asc')->paginate(5);
         return view('alumno.inicio',compact('alumno'));
     }
 
@@ -39,7 +42,7 @@ class AlumnoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AlumnoValidation $request)
     {
         //
         if($request->hasFile('fotos')){
@@ -67,9 +70,8 @@ class AlumnoController extends Controller
         $alumno->enfermedades_padecida = $request->enfermedades_padecida;
         $alumno->enfermedades_psicologica = $request->enfermedades_psicologica;
         $alumno->representante_id = $request->representante_id;
-        if($alumno->save()){
-            return redirect('alumno')->with('alumno','Registro con exito.');
-        }
+        $alumno->save();
+        return redirect('alumno')->with('alumno','Registro con exito.');
     }
 
     /**
@@ -106,10 +108,10 @@ class AlumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AlumnoValidation $request, $id)
     {
         //
-        $alumno = Alumno::find($alumno);
+        $alumno = Alumno::find($id);
         if($request->hasFile('fotos')){
             // $archivo=Request()->except('_token');
             $archivo = $request->file('fotos');

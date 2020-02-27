@@ -124,6 +124,10 @@
                         {!! Form::radio('sexo', 'Masculino')!!}
                     </div>
                     <div class="col-md-3">
+                        {!! Form::label("docente_id", "Docente", ["class"=>"label-primary"]) !!}
+                        {!! Form::select("docente_id", $docente, $docente, ["class"=>"form-control"]) !!}
+                    </div>
+                    <div class="col-md-3">
                         <br>
                         {!! Form::submit("Actualizar", ["class"=>"btn btn-primary"]) !!}
                         {!! link_to_route("representante.index", "Regresar", $parameters = [null], $attributes = ["class"=>"btn btn-success"]) !!}

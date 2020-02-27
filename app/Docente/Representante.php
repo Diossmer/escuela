@@ -2,6 +2,7 @@
 
 namespace App\Docente;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Representante extends Model
@@ -13,7 +14,7 @@ class Representante extends Model
         'segundo_apellido','cedula','email',
         'fecha_nacimiento','trabajo','grado_instruccion',
         'profesion_ocupacion','lugar_trabajo',
-        'telefono','sexo',
+        'telefono','sexo','docente_id',
     ];
     protected $hidden = [''];
     protected $casts = [''];
@@ -24,7 +25,11 @@ class Representante extends Model
             return $query->where('nombre', 'LIKE', '%'.$nombres.'%');
         }
     }
+    public function docente(){
+        return $this->belongsTo(User::class,'docente_id');
+    }
+    //aprueba
     public function alumno(){
-        return $this->belongsTo(Representante::class,'representante_id');
+        return $this->hasmany(Representante::class,'representante_id');
     }
 }

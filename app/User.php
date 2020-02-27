@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Docente\Alumno;
 use App\Docente\Periodo;
+use App\Docente\Representante;
 use App\Docente\Seccion;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,11 +58,17 @@ class User extends Authenticatable
     }
     /*** DOCENTE, PERIODO, SECCION, REPRESENTANTE Y ALUMNO ***/
 
-    public function periodo()
+    public function periodos()
     {
         return $this->hasMany('App\Docente\Periodo','docente_id');
     }
     public function userPeriodo(){
         return $this->hasOneThrough(Seccion::class,Periodo::class,'docente_id','periodo_id');
+    }
+    public function representantes(){
+        return $this->hasMany(Representante::class,'docente_id');
+    }
+    public function userAlumno(){
+        return $this->hasOneThrough(Alumno::class,Representante::class,'docente_id','representante_id');
     }
 }

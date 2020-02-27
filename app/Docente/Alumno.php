@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Alumno extends Model
 {
     //
-    protected $table="";
+    protected $table="alumnos";
     protected $fillable=[
         'nombre', 'segundo_nombre', 'apellido', 'segundo_apellido',
-        'lugar_nacimiento','direccion','dia','mes','año','cedula',
+        'lugar_nacimiento','direccion','fecha','cedula',
         'email','sexo','camisa','pantalon','zapato','fotos',
         'enfermedades_padecida','enfermedades_psicologica','representante_id'
     ];
@@ -18,8 +18,11 @@ class Alumno extends Model
     protected $casts = [''];
     protected $guarded = [''];
     protected $date = [''];
-    
+
     public function representantes(){
-        return $this->hasMany(Representante::class,'representante_id');
+        return $this->belongsTo(Representante::class,'representante_id');
+    }
+    public function secciones(){
+        return $this->belongsToMany(Seccion::class,'alumno_seccion','seccion_id','alumno_id');
     }
 }

@@ -78,12 +78,13 @@
             <table class="table table-hover text-nowrap">
                     <thead>
                         <tr valing="middle" align="center">
-                            <th>nombre</th>
-                            <th>apellido</th>
-                            <th>cedula</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cedula</th>
                             <th>Dirección de correo</th>
-                            <th>telefono</th>
-                            <th>accion</th>
+                            <th>Telefono</th>
+                            <th>Docente</th>
+                            <th>Acción</th>
                         </tr>
                 </thead>
                 <tbody>
@@ -94,6 +95,7 @@
                             <td>{{$representantes->cedula}}</td>
                             <td>{{$representantes->email}}</td>
                             <td>{{$representantes->telefono}}</td>
+                            <td>{{$representantes->docente->nombre}}</td>
                             <td>{!! link_to_route("representante.edit", "Editar", $representantes->id, ['class'=>'btn btn-success']) !!}
                             {!! link_to_route("representante.show", "Mostrar", $representantes->id, ['class'=>'btn btn-dark']) !!}</td>
                         </tr>

@@ -47,15 +47,19 @@
               </div>
               <div class="card-body">
               <h4>Perido</h4>
-                @foreach (@$docente->periodo as $periodos)
-                    <p><b>Desde el</b> {{@$periodos->periodo_desde}} <b>Hasta el</b> {{@$periodos->periodo_hasta}}</p>
+                @foreach (@$docente->periodos as $periodo)
+                    <p><b>Desde el</b> {{@$periodo->periodo_desde}} <b>Hasta el</b> {{@$periodo->periodo_hasta}}</p>
                 @endforeach
               <h3>Secciones</h3>
                 Seccion:{{@$docente->userPeriodo->descripcion}} Grado: {{@$docente->userPeriodo->grado}}
               <h3>Representante</h3>
-
+                <div class="text-danger">
+                    @foreach ($docente->representantes as $representante)
+                        {{@$representante->nombre}}
+                    @endforeach
+                </div>
               <h3>Alumno</h3>
-
+                {{@$docente->userAlumno->nombre}}
               </div>
               <!-- /.card-body -->
               <div class="card-footer">

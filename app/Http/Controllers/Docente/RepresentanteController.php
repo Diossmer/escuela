@@ -6,6 +6,7 @@ use App\Docente\Representante;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RepresentanteVerification;
+use App\User;
 
 class RepresentanteController extends Controller
 {
@@ -31,7 +32,13 @@ class RepresentanteController extends Controller
     public function create()
     {
         //
-        return view('representante.crear');
+        $docente = User::join('role_user', function ($join) {
+            $join->on('users.id', '=', 'role_user.user_id')
+            ->where('role_user.role_id','>',1);})
+            ->select('users.*')
+            ->orderBy('nombre','Asc')
+            ->pluck('nombre','id');
+        return view('representante.crear',compact('docente'));
     }
 
     /**
@@ -57,6 +64,7 @@ class RepresentanteController extends Controller
         $representante->lugar_trabajo = $request->lugar_trabajo;
         $representante->telefono = $request->telefono;
         $representante->sexo = $request->sexo;
+        $representante->docente_id = $request->docente_id;
         $representante->save();
         return redirect('representante')->with('representante','Exito registro.');
     }
@@ -84,7 +92,13 @@ class RepresentanteController extends Controller
     {
         //
         $representante = Representante::findOrFail($id);
-        return view('representante.editar',compact('representante'));
+        $docente = User::join('role_user', function ($join) {
+            $join->on('users.id', '=', 'role_user.user_id')
+            ->where('role_user.role_id','>',1);})
+            ->select('users.*')
+            ->orderBy('nombre','Asc')
+            ->pluck('nombre','id');
+        return view('representante.editar',compact('representante','docente'));
     }
 
     /**
@@ -111,6 +125,7 @@ class RepresentanteController extends Controller
         $representante->lugar_trabajo = $request->lugar_trabajo;
         $representante->telefono = $request->telefono;
         $representante->sexo = $request->sexo;
+        $representante->docente_id = $request->docente_id;
         $representante->save();
         return redirect('representante')->with('representante','Actualizado con exito.');
     }

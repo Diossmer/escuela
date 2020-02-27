@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RepresentanteVerification extends FormRequest
+class AlumnoValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,17 +26,18 @@ class RepresentanteVerification extends FormRequest
         return [
             //
             'nombre'=>'required',
-            'apellido'=>'',
+            'apellido'=>'required',
+            'lugar_nacimiento'=>'required',
+            'direccion'=>'required',
+            'fecha'=>'required',
             'cedula'=>'required',
             'email'=>'required',
-            'fecha_nacimiento'=>'required',
-            'trabajo'=>'required',
-            'grado_instruccion'=>'required',
-            'profesion_ocupacion'=>'required',
-            'lugar_trabajo'=>'required',
-            'telefono'=>'required',
             'sexo'=>'required',
-            'docente_id'=>'required',
+            'camisa'=>'required',
+            'pantalon'=>'required',
+            'zapato'=>'required',
+            'fotos'=>'required',
+            'representante_id'=>'required',
         ];
     }
 }

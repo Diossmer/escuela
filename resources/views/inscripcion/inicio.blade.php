@@ -55,7 +55,7 @@
         <h3 class="card-title">Alumno</h3>
 
         <div class="card-tools">
-            {!! Form::open(['route'=>['alumno.index'],'method'=>'get','class'=>'form-inline ml-3']) !!}
+            {!! Form::open(['route'=>['admin.index'],'method'=>'get','class'=>'form-inline ml-3']) !!}
             <div class="input-group input-group-sm">
             {!! Form::text("nombre", old('nombre'), ['class'=>'form-control form-control-navbar',"placeholder"=>"Buscar"]) !!}
             <div class="input-group-append">
@@ -75,26 +75,16 @@
                             <th>Apellido</th>
                             <th>Fecha de nacimiento</th>
                             <th>Representante</th>
+                            <th>Seccion</th>
                             <th>Accion</th>
                         </tr>
                 </thead>
                 <tbody>
-                    @foreach ($alumno as $alumnos)
-                        <tr valing="middle" align="center">
-                            <td><img src="/images/{{$alumnos->fotos}}" alt="" height="100" width="100"></td>
-                            <td>{{$alumnos->nombre}}</td>
-                            <td>{{$alumnos->apellido}}</td>
-                            <td>{{$alumnos->fecha}}</td>
-                            <td>{{$alumnos->representantes->nombre}}</td>
-                            <td>{!! link_to_route("alumno.edit", "Edit", $alumnos->id, ['class'=>'btn btn-success']) !!}
-                            {!! link_to_route("alumno.show", "Mostrar", $alumnos->id, ['class'=>'btn btn-dark']) !!}</td>
-                        </tr>
-                    @endforeach
+                    SWITCH PARA LA SECCION Y LA EJECUCION EL CUPO RESTANDO EL INGRESO DEL ALUMNO
                 </div>
                 </div>
                 </tbody>
               </table>
-              {{$alumno->links()}}
               <!-- /.card-body -->
               <div class="card-footer">
                 Laravel 5.8.*

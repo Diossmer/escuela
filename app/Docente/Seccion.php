@@ -2,7 +2,6 @@
 
 namespace App\Docente;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Seccion extends Model
@@ -18,5 +17,7 @@ class Seccion extends Model
     public function periodos(){
         return $this->belongsTo(Periodo::class,'periodo_id');
     }
-
+    public function alumnos(){
+        return $this->belongsToMany(Alumno::class);
+    }
 }

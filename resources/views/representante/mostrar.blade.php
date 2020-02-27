@@ -111,6 +111,10 @@
                             <th>Genero/Sexo</th>
                             <td>{{$representante->sexo}}</td>
                         </tr>
+                        <tr>
+                            <th>Docente</th>
+                            <td>{{$representante->docente->nombre}}</td>
+                        </tr>
                     </thead>
                 </table>
               </div>
