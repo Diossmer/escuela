@@ -75,7 +75,7 @@
                 {{-- AQUI EL CHARTS --}}
                 <html>
                     <head>
-                      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                      <script type="text/javascript" src="{{asset("assets/js/charts/loader.js")}}"></script>
                       <script type="text/javascript">
                         // var cupo = "echo $value->cupo";
                         // var descripcion = 'echo $value->descripcion';
