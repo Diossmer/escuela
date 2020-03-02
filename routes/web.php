@@ -17,7 +17,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('inscripcion', 'InscripcionController');
+Route::resource('inscripcion', 'InscripcionController',['except'=>['destroy','show','index']]);
 Route::get('documento',function(){
     $pdf = \PDF::loadView('planilla.pdf');
     return $pdf->stream();

@@ -30,8 +30,6 @@ class AlumnoValidation extends FormRequest
             'lugar_nacimiento'=>'required',
             'direccion'=>'required',
             'fecha'=>'required',
-            'cedula'=>'required',
-            'email'=>'required',
             'sexo'=>'required',
             'camisa'=>'required',
             'pantalon'=>'required',

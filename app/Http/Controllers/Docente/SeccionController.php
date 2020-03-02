@@ -43,7 +43,13 @@ class SeccionController extends Controller
     public function store(SeccionVerification $request)
     {
         //
-        Seccion::create($request->all());
+        // Seccion::create($request->all());
+        Seccion::create([
+            'descripcion'=>$request->descripcion.$request->grado,
+            'grado'=>$request->grado,
+            'cupo'=>$request->cupo,
+            'periodo_id'=>$request->periodo_id,
+        ]);
         return redirect('seccion')->with('seccion','Registro con exito!!!');
     }
 

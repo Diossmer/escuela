@@ -23,9 +23,9 @@ class CreateRepresentantesTable extends Migration
             $table->string('email')->unique();
             $table->date('fecha_nacimiento');
             $table->string('trabajo')->nullable();
-            $table->string('grado_instruccion');
-            $table->string('profesion_ocupacion');
-            $table->string('lugar_trabajo');
+            $table->string('grado_instruccion')->nullable();
+            $table->string('profesion_ocupacion')->nullable();
+            $table->string('lugar_trabajo')->nullable();
             $table->string('telefono');
             $table->string('sexo');
             $table->unsignedBigInteger('docente_id');

@@ -62,13 +62,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Docente\Periodo','docente_id');
     }
-    public function userPeriodo(){
-        return $this->hasOneThrough(Seccion::class,Periodo::class,'docente_id','periodo_id');
+    public function userSeccion(){
+        return $this->hasManyThrough(Seccion::class,Periodo::class,'docente_id','periodo_id');
     }
     public function representantes(){
         return $this->hasMany(Representante::class,'docente_id');
     }
     public function userAlumno(){
-        return $this->hasOneThrough(Alumno::class,Representante::class,'docente_id','representante_id');
+        return $this->hasManyThrough(Alumno::class,Representante::class,'docente_id','representante_id');
     }
 }

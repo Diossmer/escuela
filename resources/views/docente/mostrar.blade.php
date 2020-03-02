@@ -51,7 +51,10 @@
                     <p><b>Desde el</b> {{@$periodo->periodo_desde}} <b>Hasta el</b> {{@$periodo->periodo_hasta}}</p>
                 @endforeach
               <h3>Secciones</h3>
-                Seccion:{{@$docente->userPeriodo->descripcion}} Grado: {{@$docente->userPeriodo->grado}}
+              @foreach ($docente->userSeccion as $Alumnos)
+               tabla-> Seccion: {{@$Alumnos->descripcion}}Grado:{{@$Alumnos->grado}}
+            @endforeach
+
               <h3>Representante</h3>
                 <div class="text-danger">
                     @foreach ($docente->representantes as $representante)
@@ -59,7 +62,9 @@
                     @endforeach
                 </div>
               <h3>Alumno</h3>
-                {{@$docente->userAlumno->nombre}}
+              @foreach ($docente->userAlumno as $Alumnos)
+                    {{@$Alumnos->nombre}}
+              @endforeach
               </div>
               <!-- /.card-body -->
               <div class="card-footer">
