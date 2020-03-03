@@ -23,6 +23,6 @@ class Alumno extends Model
         return $this->belongsTo(Representante::class,'representante_id');
     }
     public function secciones(){
-        return $this->belongsToMany(Seccion::class,'alumno_seccion','seccion_id','alumno_id','grado_id');
+        return $this->belongsToMany(Seccion::class,'alumno_seccion','seccion_id','alumno_id');
     }
 }

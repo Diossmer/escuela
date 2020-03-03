@@ -17,7 +17,15 @@ class InscripcionController extends Controller
     public function index()
     {
         //
-        // return view('inscripcion.crear');
+        // $inscripcion = Alumno_Seccion::rightJoin('alumnos', 'alumno_seccion.id', '=', 'alumnos.id')
+        // ->get();
+        // $inscripcion = Alumno_Seccion::rightJoin('seccions', 'seccion_id', '=', 'alumno_seccion.id')
+        // ->get();
+        $inscripcion = Alumno_Seccion::Join('alumnos','alumno_seccion.id','=','alumno_seccion.id')
+        ->join('seccions', 'seccions.id', '=', 'alumno_id')
+        ->select('alumno_seccion.id','alumnos.nombre','seccions.descripcion')
+        ->get();
+        return view('inscripcion.inicio',compact('inscripcion'));
     }
 
     /**
@@ -43,10 +51,9 @@ class InscripcionController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    $a= Seccion::where('descripcion','>','A')->get();
+        //  FOREACH GUARDA TODAS LA SECCION
+    $a= Seccion::get();
     // || $a[0]->grado == $request->grado;
-
 
     $cupo= Seccion::leftJoin('alumno_seccion', function ($join) {
         $join->on('seccion_id', '=', 'alumno_seccion.seccion_id')
@@ -63,7 +70,7 @@ class InscripcionController extends Controller
                     $inscripcion->alumno_id = $request->alumno_id;
                     $inscripcion->seccion_id = $request->seccion_id;
                     $inscripcion->save();
-                return redirect('inscripcion/create')->with("inscripcion","Se agrego a la sección");
+                return redirect('inscripcion')->with("inscripcion","Se agrego a la sección");
                 }else{
                     return redirect('inscripcion/create')->with("inscripcion","no puede agregar en esta seccion");
                 }
@@ -73,50 +80,12 @@ class InscripcionController extends Controller
                 $inscripcion->alumno_id = $request->alumno_id;
                 $inscripcion->seccion_id = $request->seccion_id;
                 $inscripcion->save();
-            return redirect('inscripcion/create')->with("inscripcion","Se agrego a la sección");
+            return redirect('inscripcion')->with("inscripcion","Se agrego a la sección");
             }else{
                 return redirect('inscripcion/create')->with("inscripcion","no puede agregar en esta seccion");
             }
         }
         return redirect('inscripcion/create')->with("inscripcion","no puede agregar más");
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-        $alumno = Alumno::pluck('nombre','id');
-        $seccion = Seccion::pluck('descripcion','id');
-        return view('inscripcion.editar',compact('alumno','seccion'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-        return redirect('inscripcion');
     }
 
     /**
@@ -128,5 +97,7 @@ class InscripcionController extends Controller
     public function destroy($id)
     {
         //
+        Alumno_Seccion::destroy($id);
+        return redirect('inscripcion');
     }
 }

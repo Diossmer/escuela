@@ -43,7 +43,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Visualizar
+                Lista de registro
                 <i class="fas fa-angle-left right"></i>
                 {{-- <span class="badge badge-info right">Total:{{Auth::user()->get()->count()}}</span> --}}
               </p>
@@ -119,7 +119,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
                 <p>
-                Tabla de registro
+                Lista de registro
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -185,7 +185,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="{{route('inscripcion.create')}}" class="nav-link">
+                <a href="{{route('inscripcion.index')}}" class="nav-link">
                     <i class="fas fa-user nav-icon"></i>
                   <p>Inscripción</p>
                 </a>
