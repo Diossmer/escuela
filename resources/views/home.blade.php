@@ -116,10 +116,10 @@
                     <body>
                     <div class="row">
                         <div class="col-md-6">
-                      <div id="piechart" style="width: 900px; height: 500px;"></div>
+                      <div id="piechart" style="width: 700px; height: 500px;"></div>
                         </div>
                         <div class="col-md-6">
-                      <div id="piechart2" style="width: 900px; height: 500px;"></div>
+                      <div id="piechart2" style="width: 700px; height: 500px;"></div>
                         </div>
                     </div>
                     </body>
