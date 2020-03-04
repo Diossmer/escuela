@@ -28,7 +28,7 @@ class HomeController extends Controller
         foreach ($seccion as $value) {
             $value;
         }
-        dd($seccion);
+        // dd($seccion);
         return view('home');
     }
 }

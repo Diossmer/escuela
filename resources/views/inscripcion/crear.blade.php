@@ -64,16 +64,16 @@
                     <div class="row">
                         <div class="col-md-3">
                             {!! Form::label("alumno_id", "Alumnos", ["Class" => "label label-primary"]) !!}
-                            {!! Form::select("alumno_id", $alumno, old("alumno_id"), ["class"=>"form-control"]) !!}
+                            {!! Form::select("alumno_id", $alumno, null, ["class"=>"form-control"]) !!}
                         </div>
                         <div class="col-md-3">
                             {!! Form::label("seccion_id", "Sección", ["class"=>"label label-primary"]) !!}
-                            {!! Form::select("seccion_id", $seccion, old('seccion_id'), ["class"=>"form-control"]) !!}
+                            {!! Form::select("seccion_id", $seccion, null, ["class"=>"form-control"]) !!}
                         </div>
                         <div class="col-md-3">
                             <br>
                             {!! Form::submit("Registrar", ["class"=>"btn btn-primary"]) !!}
-                            {!! link_to_route("alumno.index", "Regresar", $parameters = [null], $attributes = ["class"=>"btn btn-success"]) !!}
+                            {!! link_to_route("inscripcion.index", "Regresar", $parameters = [null], $attributes = ["class"=>"btn btn-success"]) !!}
                         </div>
                     </div>
                     {!! Form::close() !!}

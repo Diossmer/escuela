@@ -56,7 +56,7 @@
               <div class="card-header">
                 <h3 class="card-title">Inscripción</h3>
                 <div class="card-tools">
-                    {!! Form::open(['route'=>['admin.index'],'method'=>'get','class'=>'form-inline ml-3']) !!}
+                    {!! Form::open(['route'=>['inscripcion.index'],'method'=>'get','class'=>'form-inline ml-3']) !!}
                         <div class="input-group input-group-sm">
                         {!! Form::text("nombre", old('nombre'), ['class'=>'form-control form-control-navbar',"placeholder"=>"Buscar"]) !!}
                         <div class="input-group-append">
@@ -79,8 +79,8 @@
                 <tbody>
                     @foreach ($inscripcion as $inscripciones)
                         <tr valing="middle" align="center">
-                            <td>{{$inscripciones->nombre}}</td>
-                            <td>{{$inscripciones->descripcion}}</td>
+                            <td>{{$inscripciones->alumnos->nombre}}</td>
+                            <td>{{$inscripciones->secciones->descripcion}}</td>
                             <td>
                             {!! Form::open(['route'=>['inscripcion.destroy',$inscripciones->id],'method'=>'delete']) !!}
                             {!! Form::token() !!}

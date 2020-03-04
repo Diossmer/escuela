@@ -14,17 +14,12 @@ class InscripcionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        // $inscripcion = Alumno_Seccion::rightJoin('alumnos', 'alumno_seccion.id', '=', 'alumnos.id')
-        // ->get();
-        // $inscripcion = Alumno_Seccion::rightJoin('seccions', 'seccion_id', '=', 'alumno_seccion.id')
-        // ->get();
-        $inscripcion = Alumno_Seccion::Join('alumnos','alumno_seccion.id','=','alumno_seccion.id')
-        ->join('seccions', 'seccions.id', '=', 'alumno_id')
-        ->select('alumno_seccion.id','alumnos.nombre','seccions.descripcion')
-        ->get();
+        $nombre = $request->nombre;
+        $inscripcion = Alumno_Seccion::with('alumnos','secciones')->get();
+
         return view('inscripcion.inicio',compact('inscripcion'));
     }
 
@@ -51,14 +46,13 @@ class InscripcionController extends Controller
      */
     public function store(Request $request)
     {
-        //  FOREACH GUARDA TODAS LA SECCION
+        //
     $a= Seccion::get();
     // || $a[0]->grado == $request->grado;
 
     $cupo= Seccion::leftJoin('alumno_seccion', function ($join) {
         $join->on('seccion_id', '=', 'alumno_seccion.seccion_id')
-        ->where('alumno_seccion.seccion_id','>',0);})
-        // ->select('seccions.*')
+        ->where('alumno_seccion.seccion_id','=',0);})
         ->get();
         $ingreso = Seccion::Join('alumno_seccion','seccions.id','=','alumno_seccion.seccion_id')
         ->where('grado','=',1)
