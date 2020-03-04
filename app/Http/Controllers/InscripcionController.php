@@ -54,12 +54,12 @@ class InscripcionController extends Controller
         $join->on('seccion_id', '=', 'alumno_seccion.seccion_id')
         ->where('alumno_seccion.seccion_id','=',0);})
         ->get();
-        $ingreso = Seccion::Join('alumno_seccion','seccions.id','=','alumno_seccion.seccion_id')
+        $A1 = Seccion::Join('alumno_seccion','seccions.id','=','alumno_seccion.seccion_id')
         ->where('grado','=',1)
         ->get()->count();
         if($a[0]->descripcion =="A1"){
 
-                if($ingreso < $cupo[0]->cupo){
+                if($A1 < $cupo[0]->cupo){
                     $inscripcion = new Alumno_Seccion();
                     $inscripcion->alumno_id = $request->alumno_id;
                     $inscripcion->seccion_id = $request->seccion_id;

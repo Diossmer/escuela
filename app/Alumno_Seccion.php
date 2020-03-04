@@ -21,10 +21,4 @@ class Alumno_Seccion extends Model
     {
         return $this->belongsTo('App\Docente\Seccion','seccion_id');
     }
-
-    public function scopeBuscar($query,$nombre){
-        if($nombre){
-            return $query->where('nombre', 'LIKE', '%'.$nombre.'%');
-        }
-    }
 }

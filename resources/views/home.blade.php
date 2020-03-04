@@ -77,33 +77,51 @@
                     <head>
                       <script type="text/javascript" src="{{asset("assets/js/charts/loader.js")}}"></script>
                       <script type="text/javascript">
-                        // var cupo = "echo $value->cupo";
-                        // var descripcion = 'echo $value->descripcion';
+
                         google.charts.load('current', {'packages':['corechart']});
                         google.charts.setOnLoadCallback(drawChart);
 
                         function drawChart() {
-                            var valor = 2;
 
                           var data = google.visualization.arrayToDataTable([
-                            ['Seccion', 'Cupos Disponible'],
-                            // foreach para el dato php nativo
-                            ['Propiedades', valor]
-                            // [descripcion,cupo],
+                            ['Seccion', 'Cupos Disponibles'],
+                            ['<?php echo $datos->descripcion ?>',<?php echo  $count ?>],
+                            ['<?php echo $datos2->descripcion ?>',<?php echo $count2 ?>],
+                            ['<?php echo $datos3->descripcion ?>',<?php echo $count3 ?>],
                           ]);
 
                           var options = {
                             title: 'Mostrar seccion y cupos'
                           };
 
+                          var data2 = google.visualization.arrayToDataTable([
+                            ['Seccion', 'Cupos Disponibles'],
+
+                            ['<?php echo $datos2->descripcion ?>',<?php echo  $count2 ?>],
+                            ['<?php echo $datos2->descripcion ?>',<?php echo $count2 ?>],
+                            ['<?php echo $datos3->descripcion ?>',<?php echo $count3 ?>],
+                          ]);
+
+                          var options2 = {
+                            title: 'Mostrar seccion y cupos'
+                          };
                           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                          var charte = new google.visualization.PieChart(document.getElementById('piechart2'));
 
                           chart.draw(data, options);
+                          charte.draw(data2,options2);
                         }
                       </script>
                     </head>
                     <body>
+                    <div class="row">
+                        <div class="col-md-6">
                       <div id="piechart" style="width: 900px; height: 500px;"></div>
+                        </div>
+                        <div class="col-md-6">
+                      <div id="piechart2" style="width: 900px; height: 500px;"></div>
+                        </div>
+                    </div>
                     </body>
                   </html>
                 {{-- AQUI FINALIZA CHARTS --}}
