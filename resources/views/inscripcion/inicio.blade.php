@@ -56,7 +56,7 @@
               <div class="card-header">
                 <h3 class="card-title">Inscripción</h3>
                 <div class="card-tools">
-                    {!! Form::open(['route'=>['inscripcion.index'],'method'=>'get','class'=>'form-inline ml-3']) !!}
+                    {{-- {!! Form::open(['route'=>['inscripcion.index'],'method'=>'get','class'=>'form-inline ml-3']) !!}
                         <div class="input-group input-group-sm">
                         {!! Form::text("nombre", old('nombre'), ['class'=>'form-control form-control-navbar',"placeholder"=>"Buscar"]) !!}
                         <div class="input-group-append">
@@ -64,7 +64,8 @@
                             </div>
                             {!! link_to_route("inscripcion.create", $title = "Nuevo", $parameters = [null], $attributes = ['class'=>'btn btn-primary']) !!}
                         </div>
-                    {!! Form::close() !!}
+                    {!! Form::close() !!} --}}
+                    {!! link_to_route("inscripcion.create", $title = "Nuevo", $parameters = [null], $attributes = ['class'=>'btn btn-primary']) !!}
                 </div>
               </div>
               <div class="card-body">
