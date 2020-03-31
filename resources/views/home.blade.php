@@ -85,31 +85,30 @@
 
                           var data = google.visualization.arrayToDataTable([
                             ['Seccion', 'Cupos Disponibles'],
-                            ['<?php echo $datos->descripcion ?>',<?php echo  $count ?>],
-                            ['<?php echo $datos2->descripcion ?>',<?php echo $count2 ?>],
-                            ['<?php echo $datos3->descripcion ?>',<?php echo $count3 ?>],
+                            ['<?php echo @$secciones->descripcion ?>',<?php echo @$count ?>],
+
                           ]);
 
                           var options = {
                             title: 'Mostrar seccion y cupos'
                           };
 
-                          var data2 = google.visualization.arrayToDataTable([
-                            ['Seccion', 'Cupos Disponibles'],
+                          // var data2 = google.visualization.arrayToDataTable([
+                          //   ['Seccion', 'Cupos Disponibles'],
 
-                            ['<?php echo $datos2->descripcion ?>',<?php echo  $count2 ?>],
-                            ['<?php echo $datos2->descripcion ?>',<?php echo $count2 ?>],
-                            ['<?php echo $datos3->descripcion ?>',<?php echo $count3 ?>],
-                          ]);
+                          //   ['<?php echo @$datos2->descripcion ?>',<?php echo @$count2 ?>],
+                          //   ['<?php echo @$datos2->descripcion ?>',<?php echo @$count2 ?>],
+                          //   ['<?php echo @$datos3->descripcion ?>',<?php echo @$count3 ?>],
+                          // ]);
 
-                          var options2 = {
-                            title: 'Mostrar seccion y cupos'
-                          };
+                          // var options2 = {
+                          //   title: 'Mostrar seccion y cupos'
+                          // };
                           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-                          var charte = new google.visualization.PieChart(document.getElementById('piechart2'));
+                          // var charte = new google.visualization.PieChart(document.getElementById('piechart2'));
 
                           chart.draw(data, options);
-                          charte.draw(data2,options2);
+                          // charte.draw(data2,options2);
                         }
                       </script>
                     </head>

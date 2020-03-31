@@ -76,8 +76,16 @@ class RoleController extends Controller
     public function destroy($id)
     {
         //
-        Role::destroy($id);
-
-        return redirect()->back()->with('admin','EL Rol se eliminó exitosamente.');
+        $usuario = User::join('role_user', 'users.id', '=', 'role_user.user_id')
+        ->where('role_user.role_id','=',$id)
+        ->select('users.*')
+        ->orderBy('name','desc')
+        ->find($id);
+        if(isset($usuario)){
+            return redirect('rols')->with('rols','No puede eliminar el rol, ya está asignado.');
+        }else{
+            Role::destroy($id);
+            return redirect('rols')->with('rols','Se ha eliminado el rol con exito.');
+        }
     }
 }
